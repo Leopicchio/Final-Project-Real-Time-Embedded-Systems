@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="287" />
+   <irq preferredWidth="47" />
+   <inputclock preferredWidth="190" />
+   <description preferredWidth="302" />
+   <name preferredWidth="257" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Library/University Program/Communications,Library,Library/Interface Protocols/Serial,Library/University Program,Project,Library/Interface Protocols" />
+ <window width="2736" height="1754" x="0" y="0" />
+ <hdlexample language="VHDL" />
+</preferences>
