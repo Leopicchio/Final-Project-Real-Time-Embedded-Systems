@@ -10,8 +10,7 @@
    <name preferredWidth="257" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library/University Program/Communications,Library,Library/Interface Protocols/Serial,Library/University Program,Project,Library/Interface Protocols" />
+ <library expandedCategories="Project,Library" />
  <window width="2736" height="1754" x="0" y="0" />
  <hdlexample language="VHDL" />
 </preferences>

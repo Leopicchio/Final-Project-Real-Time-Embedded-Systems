@@ -188,7 +188,7 @@ APP_LIBRARY_NAMES :=
 BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
-QUARTUS_PROJECT_DIR := ../../
+QUARTUS_PROJECT_DIR := /home/vm/Final-Project-Real-Time-Embedded-Systems/hw/quartus/
 
 
 #END GENERATED

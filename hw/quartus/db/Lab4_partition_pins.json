@@ -4,10 +4,6 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "FPGA_I2C_SCLK",
-					"strict" : false
-				},
-				{
 					"name" : "LEDR[0]",
 					"strict" : false
 				},
@@ -45,6 +41,10 @@
 				},
 				{
 					"name" : "LEDR[9]",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA_I2C_SCLK",
 					"strict" : false
 				},
 				{
@@ -136,6 +136,18 @@
 					"strict" : false
 				},
 				{
+					"name" : "GPIO_0_D[0]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0_D[1]",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA_I2C_SDAT",
+					"strict" : false
+				},
+				{
 					"name" : "DRAM_DQ[0]",
 					"strict" : false
 				},
@@ -200,18 +212,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "FPGA_I2C_SDAT",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0_D[0]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0_D[1]",
-					"strict" : false
-				},
-				{
 					"name" : "AUD_ADCLRCK",
 					"strict" : false
 				},
@@ -252,7 +252,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "SW[4]",
+					"name" : "SW[9]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[0]",
 					"strict" : false
 				},
 				{
@@ -261,6 +265,10 @@
 				},
 				{
 					"name" : "SW[6]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[4]",
 					"strict" : false
 				},
 				{
@@ -273,14 +281,6 @@
 				},
 				{
 					"name" : "SW[1]",
-					"strict" : false
-				},
-				{
-					"name" : "SW[9]",
-					"strict" : false
-				},
-				{
-					"name" : "SW[0]",
 					"strict" : false
 				}
 			]

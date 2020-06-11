@@ -8,7 +8,11 @@
 			audio_and_video_config_0_external_interface_SDAT : inout std_logic                     := 'X';             -- SDAT
 			audio_and_video_config_0_external_interface_SCLK : out   std_logic;                                        -- SCLK
 			clk_clk                                          : in    std_logic                     := 'X';             -- clk
+			clk_audio_codec_clk                              : out   std_logic;                                        -- clk
 			clk_sdram_clk                                    : out   std_logic;                                        -- clk
+			pio_buttons_external_connection_export           : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
+			pio_leds_external_connection_export              : out   std_logic_vector(9 downto 0);                     -- export
+			pio_switches_external_connection_export          : in    std_logic_vector(9 downto 0)  := (others => 'X'); -- export
 			reset_reset_n                                    : in    std_logic                     := 'X';             -- reset_n
 			sdram_controller_wire_addr                       : out   std_logic_vector(12 downto 0);                    -- addr
 			sdram_controller_wire_ba                         : out   std_logic_vector(1 downto 0);                     -- ba
@@ -19,10 +23,6 @@
 			sdram_controller_wire_dqm                        : out   std_logic_vector(1 downto 0);                     -- dqm
 			sdram_controller_wire_ras_n                      : out   std_logic;                                        -- ras_n
 			sdram_controller_wire_we_n                       : out   std_logic;                                        -- we_n
-			clk_audio_codec_clk                              : out   std_logic;                                        -- clk
-			pio_buttons_external_connection_export           : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
-			pio_leds_external_connection_export              : out   std_logic_vector(9 downto 0);                     -- export
-			pio_switches_external_connection_export          : in    std_logic_vector(9 downto 0)  := (others => 'X'); -- export
 			uart_0_external_connection_rxd                   : in    std_logic                     := 'X';             -- rxd
 			uart_0_external_connection_txd                   : out   std_logic                                         -- txd
 		);
@@ -38,7 +38,11 @@
 			audio_and_video_config_0_external_interface_SDAT => CONNECTED_TO_audio_and_video_config_0_external_interface_SDAT, -- audio_and_video_config_0_external_interface.SDAT
 			audio_and_video_config_0_external_interface_SCLK => CONNECTED_TO_audio_and_video_config_0_external_interface_SCLK, --                                            .SCLK
 			clk_clk                                          => CONNECTED_TO_clk_clk,                                          --                                         clk.clk
+			clk_audio_codec_clk                              => CONNECTED_TO_clk_audio_codec_clk,                              --                             clk_audio_codec.clk
 			clk_sdram_clk                                    => CONNECTED_TO_clk_sdram_clk,                                    --                                   clk_sdram.clk
+			pio_buttons_external_connection_export           => CONNECTED_TO_pio_buttons_external_connection_export,           --             pio_buttons_external_connection.export
+			pio_leds_external_connection_export              => CONNECTED_TO_pio_leds_external_connection_export,              --                pio_leds_external_connection.export
+			pio_switches_external_connection_export          => CONNECTED_TO_pio_switches_external_connection_export,          --            pio_switches_external_connection.export
 			reset_reset_n                                    => CONNECTED_TO_reset_reset_n,                                    --                                       reset.reset_n
 			sdram_controller_wire_addr                       => CONNECTED_TO_sdram_controller_wire_addr,                       --                       sdram_controller_wire.addr
 			sdram_controller_wire_ba                         => CONNECTED_TO_sdram_controller_wire_ba,                         --                                            .ba
@@ -49,10 +53,6 @@
 			sdram_controller_wire_dqm                        => CONNECTED_TO_sdram_controller_wire_dqm,                        --                                            .dqm
 			sdram_controller_wire_ras_n                      => CONNECTED_TO_sdram_controller_wire_ras_n,                      --                                            .ras_n
 			sdram_controller_wire_we_n                       => CONNECTED_TO_sdram_controller_wire_we_n,                       --                                            .we_n
-			clk_audio_codec_clk                              => CONNECTED_TO_clk_audio_codec_clk,                              --                             clk_audio_codec.clk
-			pio_buttons_external_connection_export           => CONNECTED_TO_pio_buttons_external_connection_export,           --             pio_buttons_external_connection.export
-			pio_leds_external_connection_export              => CONNECTED_TO_pio_leds_external_connection_export,              --                pio_leds_external_connection.export
-			pio_switches_external_connection_export          => CONNECTED_TO_pio_switches_external_connection_export,          --            pio_switches_external_connection.export
 			uart_0_external_connection_rxd                   => CONNECTED_TO_uart_0_external_connection_rxd,                   --                  uart_0_external_connection.rxd
 			uart_0_external_connection_txd                   => CONNECTED_TO_uart_0_external_connection_txd                    --                                            .txd
 		);
