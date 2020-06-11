@@ -8,7 +8,11 @@ module main_system (
 	audio_and_video_config_0_external_interface_SDAT,
 	audio_and_video_config_0_external_interface_SCLK,
 	clk_clk,
+	clk_audio_codec_clk,
 	clk_sdram_clk,
+	pio_buttons_external_connection_export,
+	pio_leds_external_connection_export,
+	pio_switches_external_connection_export,
 	reset_reset_n,
 	sdram_controller_wire_addr,
 	sdram_controller_wire_ba,
@@ -19,10 +23,6 @@ module main_system (
 	sdram_controller_wire_dqm,
 	sdram_controller_wire_ras_n,
 	sdram_controller_wire_we_n,
-	clk_audio_codec_clk,
-	pio_buttons_external_connection_export,
-	pio_leds_external_connection_export,
-	pio_switches_external_connection_export,
 	uart_0_external_connection_rxd,
 	uart_0_external_connection_txd);	
 
@@ -34,7 +34,11 @@ module main_system (
 	inout		audio_and_video_config_0_external_interface_SDAT;
 	output		audio_and_video_config_0_external_interface_SCLK;
 	input		clk_clk;
+	output		clk_audio_codec_clk;
 	output		clk_sdram_clk;
+	input	[3:0]	pio_buttons_external_connection_export;
+	output	[9:0]	pio_leds_external_connection_export;
+	input	[9:0]	pio_switches_external_connection_export;
 	input		reset_reset_n;
 	output	[12:0]	sdram_controller_wire_addr;
 	output	[1:0]	sdram_controller_wire_ba;
@@ -45,10 +49,6 @@ module main_system (
 	output	[1:0]	sdram_controller_wire_dqm;
 	output		sdram_controller_wire_ras_n;
 	output		sdram_controller_wire_we_n;
-	output		clk_audio_codec_clk;
-	input	[3:0]	pio_buttons_external_connection_export;
-	output	[9:0]	pio_leds_external_connection_export;
-	input	[9:0]	pio_switches_external_connection_export;
 	input		uart_0_external_connection_rxd;
 	output		uart_0_external_connection_txd;
 endmodule

@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2020.06.10.16:23:15</td>
+    <td class="l">2020.06.11.19:44:45</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -106,7 +106,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <a href="#module_jtag_uart_0"><b>jtag_uart_0</b>
      </a> altera_avalon_jtag_uart 18.0
      <br/>&#160;&#160;
-     <a href="#module_mailbox_simple_0"><b>mailbox_simple_0</b>
+     <a href="#module_jtag_uart_FFT"><b>jtag_uart_FFT</b>
+     </a> altera_avalon_jtag_uart 18.0
+     <br/>&#160;&#160;
+     <a href="#module_mailbox_to_FFT"><b>mailbox_to_FFT</b>
+     </a> altera_avalon_mailbox_simple 18.0
+     <br/>&#160;&#160;
+     <a href="#module_mailbox_to_Sound_Acquisition"><b>mailbox_to_Sound_Acquisition</b>
      </a> altera_avalon_mailbox_simple 18.0
      <br/>&#160;&#160;
      <a href="#module_mutex_SDRAM"><b>mutex_SDRAM</b>
@@ -174,8 +180,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">s1&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>04000000</td>
-    <td class="addr"><span style="color:#989898">0x</span>04000000</td>
+    <td class="addr"><span style="color:#989898">0x</span>08000000</td>
+    <td class="addr"><span style="color:#989898">0x</span>08000000</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -191,7 +197,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">avalon_audio_slave&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>08041040</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041060</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -208,7 +214,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">avalon_av_config_slave&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>08041030</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041040</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -225,12 +231,29 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">avalon_jtag_slave&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>08041060</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041070</td>
     <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
-     <a href="#module_mailbox_simple_0"><b>mailbox_simple_0</b>
+     <a href="#module_jtag_uart_FFT"><b>jtag_uart_FFT</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">avalon_jtag_slave&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041060</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_mailbox_to_FFT"><b>mailbox_to_FFT</b>
      </a>
     </td>
     <td class="empty"></td>
@@ -242,14 +265,38 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slavem">avmm_msg_sender&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>08041000</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041030</td>
     <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavem">avmm_msg_receiver&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041040</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_mailbox_to_Sound_Acquisition"><b>mailbox_to_Sound_Acquisition</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavem">avmm_msg_sender&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>00041020</td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavem">avmm_msg_receiver&#160;</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>00041000</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -264,9 +311,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>08041050</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041058</td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>08041050</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041058</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -300,8 +347,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">debug_mem_slave&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>08040800</td>
-    <td class="addr"><span style="color:#989898">0x</span>08040800</td>
+    <td class="addr"><span style="color:#989898">0x</span>00040800</td>
+    <td class="addr"><span style="color:#989898">0x</span>00040800</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -317,8 +364,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">s1&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>08020000</td>
-    <td class="addr"><span style="color:#989898">0x</span>08020000</td>
+    <td class="addr"><span style="color:#989898">0x</span>00020000</td>
+    <td class="addr"><span style="color:#989898">0x</span>00020000</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -351,7 +398,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">s1&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>08041010</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041010</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -368,7 +415,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slaveb">s1&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>08041020</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041020</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -400,9 +447,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">control_slave&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041050</td>
     <td class="empty"></td>
-    <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>08041058</td>
+    <td class="addr"><span style="color:#989898">0x</span>00041050</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -1222,10 +1269,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
-  <a name="module_mailbox_simple_0"> </a>
+  <a name="module_jtag_uart_FFT"> </a>
   <div>
    <hr/>
-   <h2>mailbox_simple_0</h2>altera_avalon_mailbox_simple v18.0
+   <h2>jtag_uart_FFT</h2>altera_avalon_jtag_uart v18.0
    <br/>
    <div class="greydiv">
     <table class="connectionboxes">
@@ -1234,7 +1281,183 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_nios2_FFT">nios2_FFT</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="17">mailbox_simple_0</td>
+      <td class="main" rowspan="15">jtag_uart_FFT</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avalon_jtag_slave</td>
+     </tr>
+     <tr>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;irq</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_pll">pll</a>
+      </td>
+      <td class="from">outclk0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clk_0">clk_0</a>
+      </td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_nios2_sound_acquisition">nios2_sound_acquisition</a>
+      </td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">allowMultipleConnections</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">hubInstanceID</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">readBufferDepth</td>
+        <td class="parametervalue">64</td>
+       </tr>
+       <tr>
+        <td class="parametername">readIRQThreshold</td>
+        <td class="parametervalue">8</td>
+       </tr>
+       <tr>
+        <td class="parametername">simInputCharacterStream</td>
+        <td class="parametervalue"></td>
+       </tr>
+       <tr>
+        <td class="parametername">simInteractiveOptions</td>
+        <td class="parametervalue">NO_INTERACTIVE_WINDOWS</td>
+       </tr>
+       <tr>
+        <td class="parametername">useRegistersForReadBuffer</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">useRegistersForWriteBuffer</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">useRelativePathForSimFile</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">writeBufferDepth</td>
+        <td class="parametervalue">64</td>
+       </tr>
+       <tr>
+        <td class="parametername">writeIRQThreshold</td>
+        <td class="parametervalue">8</td>
+       </tr>
+       <tr>
+        <td class="parametername">clkFreq</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">avalonSpec</td>
+        <td class="parametervalue">2.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">legacySignalAllow</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">enableInteractiveInput</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">enableInteractiveOutput</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>
+      <table>
+       <tr>
+        <td class="parametername">READ_DEPTH</td>
+        <td class="parametervalue">64</td>
+       </tr>
+       <tr>
+        <td class="parametername">READ_THRESHOLD</td>
+        <td class="parametervalue">8</td>
+       </tr>
+       <tr>
+        <td class="parametername">WRITE_DEPTH</td>
+        <td class="parametervalue">64</td>
+       </tr>
+       <tr>
+        <td class="parametername">WRITE_THRESHOLD</td>
+        <td class="parametervalue">8</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_mailbox_to_FFT"> </a>
+  <div>
+   <hr/>
+   <h2>mailbox_to_FFT</h2>altera_avalon_mailbox_simple v18.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="6">
+       <a href="#module_nios2_FFT">nios2_FFT</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="19">mailbox_to_FFT</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avmm_msg_receiver</td>
@@ -1255,13 +1478,19 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="6">
        <a href="#module_nios2_sound_acquisition">nios2_sound_acquisition</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avmm_msg_sender</td>
+     </tr>
+     <tr>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;interrupt_mb_available</td>
      </tr>
      <tr>
       <td class="from">debug_reset_request&#160;&#160;</td>
@@ -1316,7 +1545,128 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">MSG_SPACE_NOTIFY</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_mailbox_to_Sound_Acquisition"> </a>
+  <div>
+   <hr/>
+   <h2>mailbox_to_Sound_Acquisition</h2>altera_avalon_mailbox_simple v18.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="6">
+       <a href="#module_nios2_sound_acquisition">nios2_sound_acquisition</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="19">mailbox_to_Sound_Acquisition</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avmm_msg_receiver</td>
+     </tr>
+     <tr>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;interrupt_msg_pending</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;rst_n</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="6">
+       <a href="#module_nios2_FFT">nios2_FFT</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avmm_msg_sender</td>
+     </tr>
+     <tr>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;interrupt_mb_available</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;rst_n</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_pll">pll</a>
+      </td>
+      <td class="from">outclk0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clk_0">clk_0</a>
+      </td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;rst_n</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">DWIDTH</td>
+        <td class="parametervalue">32</td>
+       </tr>
+       <tr>
+        <td class="parametername">AWIDTH</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">MSG_ARRIVAL_NOTIFY</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">MSG_SPACE_NOTIFY</td>
+        <td class="parametervalue">1</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -1469,7 +1819,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_pll">pll</a>
       </td>
       <td class="from">outclk0&#160;&#160;</td>
-      <td class="main" rowspan="68">nios2_FFT</td>
+      <td class="main" rowspan="86">nios2_FFT</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -1503,7 +1853,43 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
       <td class="neighbor" rowspan="6">
-       <a href="#module_mailbox_simple_0">mailbox_simple_0</a>
+       <a href="#module_jtag_uart_FFT">jtag_uart_FFT</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avalon_jtag_slave</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;irq</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="6">
+       <a href="#module_mailbox_to_FFT">mailbox_to_FFT</a>
       </td>
      </tr>
      <tr>
@@ -1538,7 +1924,69 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="6">
+       <a href="#module_mailbox_to_Sound_Acquisition">mailbox_to_Sound_Acquisition</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avmm_msg_sender</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;interrupt_mb_available</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;rst_n</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
       <td class="neighbor" rowspan="4">
+       <a href="#module_sysid_qsys_0">sysid_qsys_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;control_slave</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="6">
        <a href="#module_pio_switches">pio_switches</a>
       </td>
      </tr>
@@ -1546,6 +1994,16 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;irq</td>
      </tr>
      <tr>
       <td></td>
@@ -1744,22 +2202,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td class="from">debug_reset_request&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
        <a href="#module_pll">pll</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_sysid_qsys_0">sysid_qsys_0</a>
       </td>
      </tr>
      <tr>
@@ -2462,7 +2904,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataAddrWidth</td>
-        <td class="parametervalue">28</td>
+        <td class="parametervalue">19</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0AddrWidth</td>
@@ -2514,7 +2956,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='uart_0.s1' start='0x41000' end='0x41020' type='altera_avalon_uart.s1' /&gt;&lt;slave name='mailbox_simple_0.avmm_msg_receiver' start='0x41020' end='0x41030' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='pio_switches.s1' start='0x41030' end='0x41040' type='altera_avalon_pio.s1' /&gt;&lt;slave name='mutex_SDRAM.s1' start='0x8041050' end='0x8041058' type='altera_avalon_mutex.s1' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='uart_0.s1' start='0x41000' end='0x41020' type='altera_avalon_uart.s1' /&gt;&lt;slave name='mailbox_to_Sound_Acquisition.avmm_msg_sender' start='0x41020' end='0x41030' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='pio_switches.s1' start='0x41030' end='0x41040' type='altera_avalon_pio.s1' /&gt;&lt;slave name='mailbox_to_FFT.avmm_msg_receiver' start='0x41040' end='0x41050' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='sysid_qsys_0.control_slave' start='0x41050' end='0x41058' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='mutex_SDRAM.s1' start='0x41058' end='0x41060' type='altera_avalon_mutex.s1' /&gt;&lt;slave name='jtag_uart_FFT.avalon_jtag_slave' start='0x41060' end='0x41068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -2566,7 +3008,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">internalIrqMaskSystemInfo</td>
-        <td class="parametervalue">3</td>
+        <td class="parametervalue">31</td>
        </tr>
        <tr>
         <td class="parametername">customInstSlavesSystemInfo</td>
@@ -2651,7 +3093,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DATA_ADDR_WIDTH</td>
-        <td class="parametervalue">28</td>
+        <td class="parametervalue">19</td>
        </tr>
        <tr>
         <td class="parametername">DCACHE_BYPASS_MASK</td>
@@ -2766,7 +3208,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_pll">pll</a>
       </td>
       <td class="from">outclk0&#160;&#160;</td>
-      <td class="main" rowspan="82">nios2_sound_acquisition</td>
+      <td class="main" rowspan="94">nios2_sound_acquisition</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -2897,14 +3339,60 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_mailbox_simple_0">mailbox_simple_0</a>
+      <td class="neighbor" rowspan="6">
+       <a href="#module_mailbox_to_Sound_Acquisition">mailbox_to_Sound_Acquisition</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avmm_msg_receiver</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;interrupt_msg_pending</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;rst_n</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="6">
+       <a href="#module_mailbox_to_FFT">mailbox_to_FFT</a>
       </td>
      </tr>
      <tr>
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;avmm_msg_sender</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;interrupt_mb_available</td>
      </tr>
      <tr>
       <td></td>
@@ -3159,6 +3647,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td class="from">debug_reset_request&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
        <a href="#module_uart_0">uart_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_jtag_uart_FFT">jtag_uart_FFT</a>
       </td>
      </tr>
      <tr>
@@ -3757,15 +4261,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetAbsoluteAddr</td>
-        <td class="parametervalue">134348800</td>
+        <td class="parametervalue">131072</td>
        </tr>
        <tr>
         <td class="parametername">exceptionAbsoluteAddr</td>
-        <td class="parametervalue">134348832</td>
+        <td class="parametervalue">131104</td>
        </tr>
        <tr>
         <td class="parametername">breakAbsoluteAddr</td>
-        <td class="parametervalue">134481952</td>
+        <td class="parametervalue">264224</td>
        </tr>
        <tr>
         <td class="parametername">mmu_TLBMissExcAbsAddr</td>
@@ -3873,7 +4377,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">instSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='SDRAM_controller.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='onchip_memory.s1' start='0x8020000' end='0x8040000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_sound_acquisition.debug_mem_slave' start='0x8040800' end='0x8041000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_sound_acquisition.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='SDRAM_controller.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">faSlaveMapParam</td>
@@ -3881,7 +4385,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='SDRAM_controller.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='onchip_memory.s1' start='0x8020000' end='0x8040000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_sound_acquisition.debug_mem_slave' start='0x8040800' end='0x8041000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='mailbox_simple_0.avmm_msg_sender' start='0x8041000' end='0x8041010' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='pio_LEDS.s1' start='0x8041010' end='0x8041020' type='altera_avalon_pio.s1' /&gt;&lt;slave name='pio_buttons.s1' start='0x8041020' end='0x8041030' type='altera_avalon_pio.s1' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x8041030' end='0x8041040' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='audio_0.avalon_audio_slave' start='0x8041040' end='0x8041050' type='altera_up_avalon_audio.avalon_audio_slave' /&gt;&lt;slave name='mutex_SDRAM.s1' start='0x8041050' end='0x8041058' type='altera_avalon_mutex.s1' /&gt;&lt;slave name='sysid_qsys_0.control_slave' start='0x8041058' end='0x8041060' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='jtag_uart_0.avalon_jtag_slave' start='0x8041060' end='0x8041068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_sound_acquisition.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='mailbox_to_Sound_Acquisition.avmm_msg_receiver' start='0x41000' end='0x41010' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='pio_LEDS.s1' start='0x41010' end='0x41020' type='altera_avalon_pio.s1' /&gt;&lt;slave name='pio_buttons.s1' start='0x41020' end='0x41030' type='altera_avalon_pio.s1' /&gt;&lt;slave name='mailbox_to_FFT.avmm_msg_sender' start='0x41030' end='0x41040' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x41040' end='0x41050' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='sysid_qsys_0.control_slave' start='0x41050' end='0x41058' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='mutex_SDRAM.s1' start='0x41058' end='0x41060' type='altera_avalon_mutex.s1' /&gt;&lt;slave name='audio_0.avalon_audio_slave' start='0x41060' end='0x41070' type='altera_up_avalon_audio.avalon_audio_slave' /&gt;&lt;slave name='jtag_uart_0.avalon_jtag_slave' start='0x41070' end='0x41078' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;slave name='SDRAM_controller.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -3933,7 +4437,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">internalIrqMaskSystemInfo</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">31</td>
        </tr>
        <tr>
         <td class="parametername">customInstSlavesSystemInfo</td>
@@ -3994,7 +4498,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">BREAK_ADDR</td>
-        <td class="parametervalue">0x08040820</td>
+        <td class="parametervalue">0x00040820</td>
        </tr>
        <tr>
         <td class="parametername">CPU_ARCH_NIOS2_R1</td>
@@ -4038,7 +4542,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">EXCEPTION_ADDR</td>
-        <td class="parametervalue">0x08020020</td>
+        <td class="parametervalue">0x00020020</td>
        </tr>
        <tr>
         <td class="parametername">FLASH_ACCELERATOR_LINES</td>
@@ -4114,7 +4618,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">RESET_ADDR</td>
-        <td class="parametervalue">0x08020000</td>
+        <td class="parametervalue">0x00020000</td>
        </tr>
       </table>
      </td>
@@ -5163,14 +5667,20 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="6">
        <a href="#module_nios2_FFT">nios2_FFT</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="13">pio_switches</td>
+      <td class="main" rowspan="15">pio_switches</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td class="from">irq&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;irq</td>
      </tr>
      <tr>
       <td class="from">debug_reset_request&#160;&#160;</td>
@@ -5389,7 +5899,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="54">pll</td>
+      <td class="main" rowspan="60">pll</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;refclk</td>
@@ -5589,7 +6099,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">outclk0&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
-       <a href="#module_mailbox_simple_0">mailbox_simple_0</a>
+       <a href="#module_mailbox_to_FFT">mailbox_to_FFT</a>
       </td>
      </tr>
      <tr>
@@ -5606,6 +6116,38 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td class="from">outclk0&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
        <a href="#module_uart_0">uart_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">outclk0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_jtag_uart_FFT">jtag_uart_FFT</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">outclk0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_mailbox_to_Sound_Acquisition">mailbox_to_Sound_Acquisition</a>
       </td>
      </tr>
      <tr>
@@ -7589,7 +8131,25 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_nios2_sound_acquisition">nios2_sound_acquisition</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="13">sysid_qsys_0</td>
+      <td class="main" rowspan="15">sysid_qsys_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;control_slave</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_nios2_FFT">nios2_FFT</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;control_slave</td>
@@ -7624,18 +8184,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;reset</td>
      </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_nios2_FFT">nios2_FFT</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
     </table>
    </div>
    <br/>
@@ -7651,7 +8199,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1591798994</td>
+        <td class="parametervalue">1591897483</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -7676,7 +8224,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1591798994</td>
+        <td class="parametervalue">1591897483</td>
        </tr>
       </table>
      </td>
@@ -7890,7 +8438,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <table class="blueBar">
    <tr>
     <td class="l">generation took 0.01 seconds</td>
-    <td class="r">rendering took 0.23 seconds</td>
+    <td class="r">rendering took 0.34 seconds</td>
    </tr>
   </table>
  </body>

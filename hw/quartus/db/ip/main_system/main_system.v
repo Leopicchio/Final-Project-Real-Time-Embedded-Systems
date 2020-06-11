@@ -31,7 +31,7 @@ module main_system (
 		output wire        uart_0_external_connection_txd                    //                                            .txd
 	);
 
-	wire         pll_outclk0_clk;                                                               // pll:outclk_0 -> [audio_0:clk, audio_and_video_config_0:clk, irq_mapper:clk, irq_mapper_001:clk, jtag_uart_0:clk, mailbox_simple_0:clk, mm_interconnect_0:pll_outclk0_clk, mutex_SDRAM:clk, nios2_FFT:clk, nios2_sound_acquisition:clk, onchip_memory:clk, onchip_memory_nios2_FFT:clk, pio_LEDS:clk, pio_buttons:clk, pio_switches:clk, rst_controller_001:clk, sysid_qsys_0:clock, uart_0:clk]
+	wire         pll_outclk0_clk;                                                               // pll:outclk_0 -> [audio_0:clk, audio_and_video_config_0:clk, irq_mapper:clk, irq_mapper_001:clk, jtag_uart_0:clk, jtag_uart_FFT:clk, mailbox_to_FFT:clk, mailbox_to_Sound_Acquisition:clk, mm_interconnect_0:pll_outclk0_clk, mutex_SDRAM:clk, nios2_FFT:clk, nios2_sound_acquisition:clk, onchip_memory:clk, onchip_memory_nios2_FFT:clk, pio_LEDS:clk, pio_buttons:clk, pio_switches:clk, rst_controller_001:clk, sysid_qsys_0:clock, uart_0:clk]
 	wire         pll_outclk1_clk;                                                               // pll:outclk_1 -> [SDRAM_controller:clk, mm_interconnect_0:pll_outclk1_clk, rst_controller:clk]
 	wire  [31:0] nios2_sound_acquisition_data_master_readdata;                                  // mm_interconnect_0:nios2_sound_acquisition_data_master_readdata -> nios2_sound_acquisition:d_readdata
 	wire         nios2_sound_acquisition_data_master_waitrequest;                               // mm_interconnect_0:nios2_sound_acquisition_data_master_waitrequest -> nios2_sound_acquisition:d_waitrequest
@@ -45,7 +45,7 @@ module main_system (
 	wire  [31:0] nios2_fft_data_master_readdata;                                                // mm_interconnect_0:nios2_FFT_data_master_readdata -> nios2_FFT:d_readdata
 	wire         nios2_fft_data_master_waitrequest;                                             // mm_interconnect_0:nios2_FFT_data_master_waitrequest -> nios2_FFT:d_waitrequest
 	wire         nios2_fft_data_master_debugaccess;                                             // nios2_FFT:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_FFT_data_master_debugaccess
-	wire  [27:0] nios2_fft_data_master_address;                                                 // nios2_FFT:d_address -> mm_interconnect_0:nios2_FFT_data_master_address
+	wire  [18:0] nios2_fft_data_master_address;                                                 // nios2_FFT:d_address -> mm_interconnect_0:nios2_FFT_data_master_address
 	wire   [3:0] nios2_fft_data_master_byteenable;                                              // nios2_FFT:d_byteenable -> mm_interconnect_0:nios2_FFT_data_master_byteenable
 	wire         nios2_fft_data_master_read;                                                    // nios2_FFT:d_read -> mm_interconnect_0:nios2_FFT_data_master_read
 	wire         nios2_fft_data_master_readdatavalid;                                           // mm_interconnect_0:nios2_FFT_data_master_readdatavalid -> nios2_FFT:d_readdatavalid
@@ -81,12 +81,17 @@ module main_system (
 	wire         mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read;                          // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_read -> jtag_uart_0:av_read_n
 	wire         mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write;                         // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_write -> jtag_uart_0:av_write_n
 	wire  [31:0] mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata;                     // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_writedata -> jtag_uart_0:av_writedata
-	wire  [31:0] mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_readdata;                   // mailbox_simple_0:avmm_snd_readdata -> mm_interconnect_0:mailbox_simple_0_avmm_msg_sender_readdata
-	wire         mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_waitrequest;                // mailbox_simple_0:avmm_snd_waitrequest -> mm_interconnect_0:mailbox_simple_0_avmm_msg_sender_waitrequest
-	wire   [1:0] mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_address;                    // mm_interconnect_0:mailbox_simple_0_avmm_msg_sender_address -> mailbox_simple_0:avmm_snd_address
-	wire         mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_read;                       // mm_interconnect_0:mailbox_simple_0_avmm_msg_sender_read -> mailbox_simple_0:avmm_snd_read
-	wire         mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_write;                      // mm_interconnect_0:mailbox_simple_0_avmm_msg_sender_write -> mailbox_simple_0:avmm_snd_write
-	wire  [31:0] mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_writedata;                  // mm_interconnect_0:mailbox_simple_0_avmm_msg_sender_writedata -> mailbox_simple_0:avmm_snd_writedata
+	wire  [31:0] mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_readdata;     // mailbox_to_Sound_Acquisition:avmm_rcv_readdata -> mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_receiver_readdata
+	wire   [1:0] mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_address;      // mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_receiver_address -> mailbox_to_Sound_Acquisition:avmm_rcv_address
+	wire         mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_read;         // mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_receiver_read -> mailbox_to_Sound_Acquisition:avmm_rcv_read
+	wire         mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_write;        // mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_receiver_write -> mailbox_to_Sound_Acquisition:avmm_rcv_write
+	wire  [31:0] mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_writedata;    // mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_receiver_writedata -> mailbox_to_Sound_Acquisition:avmm_rcv_writedata
+	wire  [31:0] mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_readdata;                     // mailbox_to_FFT:avmm_snd_readdata -> mm_interconnect_0:mailbox_to_FFT_avmm_msg_sender_readdata
+	wire         mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_waitrequest;                  // mailbox_to_FFT:avmm_snd_waitrequest -> mm_interconnect_0:mailbox_to_FFT_avmm_msg_sender_waitrequest
+	wire   [1:0] mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_address;                      // mm_interconnect_0:mailbox_to_FFT_avmm_msg_sender_address -> mailbox_to_FFT:avmm_snd_address
+	wire         mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_read;                         // mm_interconnect_0:mailbox_to_FFT_avmm_msg_sender_read -> mailbox_to_FFT:avmm_snd_read
+	wire         mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_write;                        // mm_interconnect_0:mailbox_to_FFT_avmm_msg_sender_write -> mailbox_to_FFT:avmm_snd_write
+	wire  [31:0] mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_writedata;                    // mm_interconnect_0:mailbox_to_FFT_avmm_msg_sender_writedata -> mailbox_to_FFT:avmm_snd_writedata
 	wire  [31:0] mm_interconnect_0_sysid_qsys_0_control_slave_readdata;                         // sysid_qsys_0:readdata -> mm_interconnect_0:sysid_qsys_0_control_slave_readdata
 	wire   [0:0] mm_interconnect_0_sysid_qsys_0_control_slave_address;                          // mm_interconnect_0:sysid_qsys_0_control_slave_address -> sysid_qsys_0:address
 	wire  [31:0] mm_interconnect_0_nios2_sound_acquisition_debug_mem_slave_readdata;            // nios2_sound_acquisition:debug_mem_slave_readdata -> mm_interconnect_0:nios2_sound_acquisition_debug_mem_slave_readdata
@@ -129,11 +134,24 @@ module main_system (
 	wire         mm_interconnect_0_mutex_sdram_s1_read;                                         // mm_interconnect_0:mutex_SDRAM_s1_read -> mutex_SDRAM:read
 	wire         mm_interconnect_0_mutex_sdram_s1_write;                                        // mm_interconnect_0:mutex_SDRAM_s1_write -> mutex_SDRAM:write
 	wire  [31:0] mm_interconnect_0_mutex_sdram_s1_writedata;                                    // mm_interconnect_0:mutex_SDRAM_s1_writedata -> mutex_SDRAM:data_from_cpu
-	wire  [31:0] mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_readdata;                 // mailbox_simple_0:avmm_rcv_readdata -> mm_interconnect_0:mailbox_simple_0_avmm_msg_receiver_readdata
-	wire   [1:0] mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_address;                  // mm_interconnect_0:mailbox_simple_0_avmm_msg_receiver_address -> mailbox_simple_0:avmm_rcv_address
-	wire         mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_read;                     // mm_interconnect_0:mailbox_simple_0_avmm_msg_receiver_read -> mailbox_simple_0:avmm_rcv_read
-	wire         mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_write;                    // mm_interconnect_0:mailbox_simple_0_avmm_msg_receiver_write -> mailbox_simple_0:avmm_rcv_write
-	wire  [31:0] mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_writedata;                // mm_interconnect_0:mailbox_simple_0_avmm_msg_receiver_writedata -> mailbox_simple_0:avmm_rcv_writedata
+	wire         mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_chipselect;                  // mm_interconnect_0:jtag_uart_FFT_avalon_jtag_slave_chipselect -> jtag_uart_FFT:av_chipselect
+	wire  [31:0] mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_readdata;                    // jtag_uart_FFT:av_readdata -> mm_interconnect_0:jtag_uart_FFT_avalon_jtag_slave_readdata
+	wire         mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_waitrequest;                 // jtag_uart_FFT:av_waitrequest -> mm_interconnect_0:jtag_uart_FFT_avalon_jtag_slave_waitrequest
+	wire   [0:0] mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_address;                     // mm_interconnect_0:jtag_uart_FFT_avalon_jtag_slave_address -> jtag_uart_FFT:av_address
+	wire         mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_read;                        // mm_interconnect_0:jtag_uart_FFT_avalon_jtag_slave_read -> jtag_uart_FFT:av_read_n
+	wire         mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_write;                       // mm_interconnect_0:jtag_uart_FFT_avalon_jtag_slave_write -> jtag_uart_FFT:av_write_n
+	wire  [31:0] mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_writedata;                   // mm_interconnect_0:jtag_uart_FFT_avalon_jtag_slave_writedata -> jtag_uart_FFT:av_writedata
+	wire  [31:0] mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_readdata;                   // mailbox_to_FFT:avmm_rcv_readdata -> mm_interconnect_0:mailbox_to_FFT_avmm_msg_receiver_readdata
+	wire   [1:0] mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_address;                    // mm_interconnect_0:mailbox_to_FFT_avmm_msg_receiver_address -> mailbox_to_FFT:avmm_rcv_address
+	wire         mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_read;                       // mm_interconnect_0:mailbox_to_FFT_avmm_msg_receiver_read -> mailbox_to_FFT:avmm_rcv_read
+	wire         mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_write;                      // mm_interconnect_0:mailbox_to_FFT_avmm_msg_receiver_write -> mailbox_to_FFT:avmm_rcv_write
+	wire  [31:0] mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_writedata;                  // mm_interconnect_0:mailbox_to_FFT_avmm_msg_receiver_writedata -> mailbox_to_FFT:avmm_rcv_writedata
+	wire  [31:0] mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_readdata;       // mailbox_to_Sound_Acquisition:avmm_snd_readdata -> mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_sender_readdata
+	wire         mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_waitrequest;    // mailbox_to_Sound_Acquisition:avmm_snd_waitrequest -> mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_sender_waitrequest
+	wire   [1:0] mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_address;        // mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_sender_address -> mailbox_to_Sound_Acquisition:avmm_snd_address
+	wire         mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_read;           // mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_sender_read -> mailbox_to_Sound_Acquisition:avmm_snd_read
+	wire         mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_write;          // mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_sender_write -> mailbox_to_Sound_Acquisition:avmm_snd_write
+	wire  [31:0] mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_writedata;      // mm_interconnect_0:mailbox_to_Sound_Acquisition_avmm_msg_sender_writedata -> mailbox_to_Sound_Acquisition:avmm_snd_writedata
 	wire  [31:0] mm_interconnect_0_nios2_fft_debug_mem_slave_readdata;                          // nios2_FFT:debug_mem_slave_readdata -> mm_interconnect_0:nios2_FFT_debug_mem_slave_readdata
 	wire         mm_interconnect_0_nios2_fft_debug_mem_slave_waitrequest;                       // nios2_FFT:debug_mem_slave_waitrequest -> mm_interconnect_0:nios2_FFT_debug_mem_slave_waitrequest
 	wire         mm_interconnect_0_nios2_fft_debug_mem_slave_debugaccess;                       // mm_interconnect_0:nios2_FFT_debug_mem_slave_debugaccess -> nios2_FFT:debug_mem_slave_debugaccess
@@ -161,17 +179,22 @@ module main_system (
 	wire         mm_interconnect_0_uart_0_s1_begintransfer;                                     // mm_interconnect_0:uart_0_s1_begintransfer -> uart_0:begintransfer
 	wire         mm_interconnect_0_uart_0_s1_write;                                             // mm_interconnect_0:uart_0_s1_write -> uart_0:write_n
 	wire  [15:0] mm_interconnect_0_uart_0_s1_writedata;                                         // mm_interconnect_0:uart_0_s1_writedata -> uart_0:writedata
-	wire         irq_mapper_receiver0_irq;                                                      // mailbox_simple_0:irq_msg -> irq_mapper:receiver0_irq
-	wire         irq_mapper_receiver1_irq;                                                      // uart_0:irq -> irq_mapper:receiver1_irq
+	wire         irq_mapper_receiver0_irq;                                                      // mailbox_to_Sound_Acquisition:irq_space -> irq_mapper:receiver0_irq
+	wire         irq_mapper_receiver1_irq;                                                      // mailbox_to_FFT:irq_msg -> irq_mapper:receiver1_irq
+	wire         irq_mapper_receiver2_irq;                                                      // uart_0:irq -> irq_mapper:receiver2_irq
+	wire         irq_mapper_receiver3_irq;                                                      // jtag_uart_FFT:av_irq -> irq_mapper:receiver3_irq
+	wire         irq_mapper_receiver4_irq;                                                      // pio_switches:irq -> irq_mapper:receiver4_irq
 	wire  [31:0] nios2_fft_irq_irq;                                                             // irq_mapper:sender_irq -> nios2_FFT:irq
 	wire         irq_mapper_001_receiver0_irq;                                                  // audio_0:irq -> irq_mapper_001:receiver0_irq
-	wire         irq_mapper_001_receiver1_irq;                                                  // jtag_uart_0:av_irq -> irq_mapper_001:receiver1_irq
-	wire         irq_mapper_001_receiver2_irq;                                                  // pio_buttons:irq -> irq_mapper_001:receiver2_irq
+	wire         irq_mapper_001_receiver1_irq;                                                  // mailbox_to_FFT:irq_space -> irq_mapper_001:receiver1_irq
+	wire         irq_mapper_001_receiver2_irq;                                                  // mailbox_to_Sound_Acquisition:irq_msg -> irq_mapper_001:receiver2_irq
+	wire         irq_mapper_001_receiver3_irq;                                                  // jtag_uart_0:av_irq -> irq_mapper_001:receiver3_irq
+	wire         irq_mapper_001_receiver4_irq;                                                  // pio_buttons:irq -> irq_mapper_001:receiver4_irq
 	wire  [31:0] nios2_sound_acquisition_irq_irq;                                               // irq_mapper_001:sender_irq -> nios2_sound_acquisition:irq
 	wire         rst_controller_reset_out_reset;                                                // rst_controller:reset_out -> [SDRAM_controller:reset_n, mm_interconnect_0:SDRAM_controller_reset_reset_bridge_in_reset_reset]
 	wire         nios2_sound_acquisition_debug_reset_request_reset;                             // nios2_sound_acquisition:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_002:reset_in1]
 	wire         nios2_fft_debug_reset_request_reset;                                           // nios2_FFT:debug_reset_request -> [rst_controller:reset_in2, rst_controller_001:reset_in2, rst_controller_002:reset_in2]
-	wire         rst_controller_001_reset_out_reset;                                            // rst_controller_001:reset_out -> [audio_0:reset, audio_and_video_config_0:reset, irq_mapper:reset, irq_mapper_001:reset, jtag_uart_0:rst_n, mailbox_simple_0:rst_n, mm_interconnect_0:nios2_sound_acquisition_reset_reset_bridge_in_reset_reset, mutex_SDRAM:reset_n, nios2_FFT:reset_n, nios2_sound_acquisition:reset_n, onchip_memory:reset, onchip_memory_nios2_FFT:reset, pio_LEDS:reset_n, pio_buttons:reset_n, pio_switches:reset_n, rst_translator:in_reset, sysid_qsys_0:reset_n, uart_0:reset_n]
+	wire         rst_controller_001_reset_out_reset;                                            // rst_controller_001:reset_out -> [audio_0:reset, audio_and_video_config_0:reset, irq_mapper:reset, irq_mapper_001:reset, jtag_uart_0:rst_n, jtag_uart_FFT:rst_n, mailbox_to_FFT:rst_n, mailbox_to_Sound_Acquisition:rst_n, mm_interconnect_0:nios2_sound_acquisition_reset_reset_bridge_in_reset_reset, mutex_SDRAM:reset_n, nios2_FFT:reset_n, nios2_sound_acquisition:reset_n, onchip_memory:reset, onchip_memory_nios2_FFT:reset, pio_LEDS:reset_n, pio_buttons:reset_n, pio_switches:reset_n, rst_translator:in_reset, sysid_qsys_0:reset_n, uart_0:reset_n]
 	wire         rst_controller_001_reset_out_reset_req;                                        // rst_controller_001:reset_req -> [nios2_FFT:reset_req, nios2_sound_acquisition:reset_req, onchip_memory:reset_req, onchip_memory_nios2_FFT:reset_req, rst_translator:reset_req_in]
 	wire         rst_controller_002_reset_out_reset;                                            // rst_controller_002:reset_out -> pll:rst
 
@@ -239,28 +262,62 @@ module main_system (
 		.av_write_n     (~mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write),      //                  .write_n
 		.av_writedata   (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata),   //                  .writedata
 		.av_waitrequest (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest), //                  .waitrequest
-		.av_irq         (irq_mapper_001_receiver1_irq)                                 //               irq.irq
+		.av_irq         (irq_mapper_001_receiver3_irq)                                 //               irq.irq
+	);
+
+	main_system_jtag_uart_0 jtag_uart_fft (
+		.clk            (pll_outclk0_clk),                                               //               clk.clk
+		.rst_n          (~rst_controller_001_reset_out_reset),                           //             reset.reset_n
+		.av_chipselect  (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
+		.av_address     (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_address),     //                  .address
+		.av_read_n      (~mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_read),       //                  .read_n
+		.av_readdata    (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_readdata),    //                  .readdata
+		.av_write_n     (~mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_write),      //                  .write_n
+		.av_writedata   (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_writedata),   //                  .writedata
+		.av_waitrequest (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_waitrequest), //                  .waitrequest
+		.av_irq         (irq_mapper_receiver3_irq)                                       //               irq.irq
 	);
 
 	altera_avalon_mailbox #(
 		.DWIDTH (32),
 		.AWIDTH (2)
-	) mailbox_simple_0 (
-		.clk                  (pll_outclk0_clk),                                                //                   clk.clk
-		.rst_n                (~rst_controller_001_reset_out_reset),                            //                 rst_n.reset_n
-		.avmm_snd_address     (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_address),     //       avmm_msg_sender.address
-		.avmm_snd_writedata   (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_writedata),   //                      .writedata
-		.avmm_snd_write       (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_write),       //                      .write
-		.avmm_snd_read        (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_read),        //                      .read
-		.avmm_snd_readdata    (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_readdata),    //                      .readdata
-		.avmm_snd_waitrequest (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_waitrequest), //                      .waitrequest
-		.irq_msg              (irq_mapper_receiver0_irq),                                       // interrupt_msg_pending.irq
-		.avmm_rcv_address     (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_address),   //     avmm_msg_receiver.address
-		.avmm_rcv_read        (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_read),      //                      .read
-		.avmm_rcv_writedata   (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_writedata), //                      .writedata
-		.avmm_rcv_write       (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_write),     //                      .write
-		.avmm_rcv_readdata    (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_readdata),  //                      .readdata
-		.irq_space            ()                                                                //           (terminated)
+	) mailbox_to_fft (
+		.clk                  (pll_outclk0_clk),                                              //                    clk.clk
+		.rst_n                (~rst_controller_001_reset_out_reset),                          //                  rst_n.reset_n
+		.avmm_snd_address     (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_address),     //        avmm_msg_sender.address
+		.avmm_snd_writedata   (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_writedata),   //                       .writedata
+		.avmm_snd_write       (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_write),       //                       .write
+		.avmm_snd_read        (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_read),        //                       .read
+		.avmm_snd_readdata    (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_readdata),    //                       .readdata
+		.avmm_snd_waitrequest (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_waitrequest), //                       .waitrequest
+		.irq_space            (irq_mapper_001_receiver1_irq),                                 // interrupt_mb_available.irq
+		.irq_msg              (irq_mapper_receiver1_irq),                                     //  interrupt_msg_pending.irq
+		.avmm_rcv_address     (mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_address),   //      avmm_msg_receiver.address
+		.avmm_rcv_read        (mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_read),      //                       .read
+		.avmm_rcv_writedata   (mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_writedata), //                       .writedata
+		.avmm_rcv_write       (mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_write),     //                       .write
+		.avmm_rcv_readdata    (mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_readdata)   //                       .readdata
+	);
+
+	altera_avalon_mailbox #(
+		.DWIDTH (32),
+		.AWIDTH (2)
+	) mailbox_to_sound_acquisition (
+		.clk                  (pll_outclk0_clk),                                                            //                    clk.clk
+		.rst_n                (~rst_controller_001_reset_out_reset),                                        //                  rst_n.reset_n
+		.avmm_snd_address     (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_address),     //        avmm_msg_sender.address
+		.avmm_snd_writedata   (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_writedata),   //                       .writedata
+		.avmm_snd_write       (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_write),       //                       .write
+		.avmm_snd_read        (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_read),        //                       .read
+		.avmm_snd_readdata    (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_readdata),    //                       .readdata
+		.avmm_snd_waitrequest (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_waitrequest), //                       .waitrequest
+		.irq_space            (irq_mapper_receiver0_irq),                                                   // interrupt_mb_available.irq
+		.irq_msg              (irq_mapper_001_receiver2_irq),                                               //  interrupt_msg_pending.irq
+		.avmm_rcv_address     (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_address),   //      avmm_msg_receiver.address
+		.avmm_rcv_read        (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_read),      //                       .read
+		.avmm_rcv_writedata   (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_writedata), //                       .writedata
+		.avmm_rcv_write       (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_write),     //                       .write
+		.avmm_rcv_readdata    (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_readdata)   //                       .readdata
 	);
 
 	main_system_mutex_SDRAM mutex_sdram (
@@ -384,7 +441,7 @@ module main_system (
 		.chipselect (mm_interconnect_0_pio_buttons_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_pio_buttons_s1_readdata),   //                    .readdata
 		.in_port    (pio_buttons_external_connection_export),      // external_connection.export
-		.irq        (irq_mapper_001_receiver2_irq)                 //                 irq.irq
+		.irq        (irq_mapper_001_receiver4_irq)                 //                 irq.irq
 	);
 
 	main_system_pio_switches pio_switches (
@@ -396,7 +453,7 @@ module main_system (
 		.chipselect (mm_interconnect_0_pio_switches_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_pio_switches_s1_readdata),   //                    .readdata
 		.in_port    (pio_switches_external_connection_export),      // external_connection.export
-		.irq        ()                                              //                 irq.irq
+		.irq        (irq_mapper_receiver4_irq)                      //                 irq.irq
 	);
 
 	main_system_pll pll (
@@ -428,7 +485,7 @@ module main_system (
 		.readdata      (mm_interconnect_0_uart_0_s1_readdata),      //                    .readdata
 		.rxd           (uart_0_external_connection_rxd),            // external_connection.export
 		.txd           (uart_0_external_connection_txd),            //                    .export
-		.irq           (irq_mapper_receiver1_irq)                   //                 irq.irq
+		.irq           (irq_mapper_receiver2_irq)                   //                 irq.irq
 	);
 
 	main_system_mm_interconnect_0 mm_interconnect_0 (
@@ -484,17 +541,35 @@ module main_system (
 		.jtag_uart_0_avalon_jtag_slave_writedata                     (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata),                     //                                                    .writedata
 		.jtag_uart_0_avalon_jtag_slave_waitrequest                   (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest),                   //                                                    .waitrequest
 		.jtag_uart_0_avalon_jtag_slave_chipselect                    (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect),                    //                                                    .chipselect
-		.mailbox_simple_0_avmm_msg_receiver_address                  (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_address),                  //                  mailbox_simple_0_avmm_msg_receiver.address
-		.mailbox_simple_0_avmm_msg_receiver_write                    (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_write),                    //                                                    .write
-		.mailbox_simple_0_avmm_msg_receiver_read                     (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_read),                     //                                                    .read
-		.mailbox_simple_0_avmm_msg_receiver_readdata                 (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_readdata),                 //                                                    .readdata
-		.mailbox_simple_0_avmm_msg_receiver_writedata                (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_writedata),                //                                                    .writedata
-		.mailbox_simple_0_avmm_msg_sender_address                    (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_address),                    //                    mailbox_simple_0_avmm_msg_sender.address
-		.mailbox_simple_0_avmm_msg_sender_write                      (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_write),                      //                                                    .write
-		.mailbox_simple_0_avmm_msg_sender_read                       (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_read),                       //                                                    .read
-		.mailbox_simple_0_avmm_msg_sender_readdata                   (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_readdata),                   //                                                    .readdata
-		.mailbox_simple_0_avmm_msg_sender_writedata                  (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_writedata),                  //                                                    .writedata
-		.mailbox_simple_0_avmm_msg_sender_waitrequest                (mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_waitrequest),                //                                                    .waitrequest
+		.jtag_uart_FFT_avalon_jtag_slave_address                     (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_address),                     //                     jtag_uart_FFT_avalon_jtag_slave.address
+		.jtag_uart_FFT_avalon_jtag_slave_write                       (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_write),                       //                                                    .write
+		.jtag_uart_FFT_avalon_jtag_slave_read                        (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_read),                        //                                                    .read
+		.jtag_uart_FFT_avalon_jtag_slave_readdata                    (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_readdata),                    //                                                    .readdata
+		.jtag_uart_FFT_avalon_jtag_slave_writedata                   (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_writedata),                   //                                                    .writedata
+		.jtag_uart_FFT_avalon_jtag_slave_waitrequest                 (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_waitrequest),                 //                                                    .waitrequest
+		.jtag_uart_FFT_avalon_jtag_slave_chipselect                  (mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_chipselect),                  //                                                    .chipselect
+		.mailbox_to_FFT_avmm_msg_receiver_address                    (mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_address),                    //                    mailbox_to_FFT_avmm_msg_receiver.address
+		.mailbox_to_FFT_avmm_msg_receiver_write                      (mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_write),                      //                                                    .write
+		.mailbox_to_FFT_avmm_msg_receiver_read                       (mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_read),                       //                                                    .read
+		.mailbox_to_FFT_avmm_msg_receiver_readdata                   (mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_readdata),                   //                                                    .readdata
+		.mailbox_to_FFT_avmm_msg_receiver_writedata                  (mm_interconnect_0_mailbox_to_fft_avmm_msg_receiver_writedata),                  //                                                    .writedata
+		.mailbox_to_FFT_avmm_msg_sender_address                      (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_address),                      //                      mailbox_to_FFT_avmm_msg_sender.address
+		.mailbox_to_FFT_avmm_msg_sender_write                        (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_write),                        //                                                    .write
+		.mailbox_to_FFT_avmm_msg_sender_read                         (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_read),                         //                                                    .read
+		.mailbox_to_FFT_avmm_msg_sender_readdata                     (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_readdata),                     //                                                    .readdata
+		.mailbox_to_FFT_avmm_msg_sender_writedata                    (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_writedata),                    //                                                    .writedata
+		.mailbox_to_FFT_avmm_msg_sender_waitrequest                  (mm_interconnect_0_mailbox_to_fft_avmm_msg_sender_waitrequest),                  //                                                    .waitrequest
+		.mailbox_to_Sound_Acquisition_avmm_msg_receiver_address      (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_address),      //      mailbox_to_Sound_Acquisition_avmm_msg_receiver.address
+		.mailbox_to_Sound_Acquisition_avmm_msg_receiver_write        (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_write),        //                                                    .write
+		.mailbox_to_Sound_Acquisition_avmm_msg_receiver_read         (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_read),         //                                                    .read
+		.mailbox_to_Sound_Acquisition_avmm_msg_receiver_readdata     (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_readdata),     //                                                    .readdata
+		.mailbox_to_Sound_Acquisition_avmm_msg_receiver_writedata    (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_receiver_writedata),    //                                                    .writedata
+		.mailbox_to_Sound_Acquisition_avmm_msg_sender_address        (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_address),        //        mailbox_to_Sound_Acquisition_avmm_msg_sender.address
+		.mailbox_to_Sound_Acquisition_avmm_msg_sender_write          (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_write),          //                                                    .write
+		.mailbox_to_Sound_Acquisition_avmm_msg_sender_read           (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_read),           //                                                    .read
+		.mailbox_to_Sound_Acquisition_avmm_msg_sender_readdata       (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_readdata),       //                                                    .readdata
+		.mailbox_to_Sound_Acquisition_avmm_msg_sender_writedata      (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_writedata),      //                                                    .writedata
+		.mailbox_to_Sound_Acquisition_avmm_msg_sender_waitrequest    (mm_interconnect_0_mailbox_to_sound_acquisition_avmm_msg_sender_waitrequest),    //                                                    .waitrequest
 		.mutex_SDRAM_s1_address                                      (mm_interconnect_0_mutex_sdram_s1_address),                                      //                                      mutex_SDRAM_s1.address
 		.mutex_SDRAM_s1_write                                        (mm_interconnect_0_mutex_sdram_s1_write),                                        //                                                    .write
 		.mutex_SDRAM_s1_read                                         (mm_interconnect_0_mutex_sdram_s1_read),                                         //                                                    .read
@@ -571,6 +646,9 @@ module main_system (
 		.reset         (rst_controller_001_reset_out_reset), // clk_reset.reset
 		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
 		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
+		.receiver2_irq (irq_mapper_receiver2_irq),           // receiver2.irq
+		.receiver3_irq (irq_mapper_receiver3_irq),           // receiver3.irq
+		.receiver4_irq (irq_mapper_receiver4_irq),           // receiver4.irq
 		.sender_irq    (nios2_fft_irq_irq)                   //    sender.irq
 	);
 
@@ -580,6 +658,8 @@ module main_system (
 		.receiver0_irq (irq_mapper_001_receiver0_irq),       // receiver0.irq
 		.receiver1_irq (irq_mapper_001_receiver1_irq),       // receiver1.irq
 		.receiver2_irq (irq_mapper_001_receiver2_irq),       // receiver2.irq
+		.receiver3_irq (irq_mapper_001_receiver3_irq),       // receiver3.irq
+		.receiver4_irq (irq_mapper_001_receiver4_irq),       // receiver4.irq
 		.sender_irq    (nios2_sound_acquisition_irq_irq)     //    sender.irq
 	);
 

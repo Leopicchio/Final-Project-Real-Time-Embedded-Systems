@@ -21,7 +21,7 @@
    {
       datum baseAddress
       {
-         value = "67108864";
+         value = "134217728";
          type = "String";
       }
    }
@@ -37,7 +37,7 @@
    {
       datum baseAddress
       {
-         value = "134484032";
+         value = "266336";
          type = "String";
       }
    }
@@ -53,7 +53,7 @@
    {
       datum baseAddress
       {
-         value = "134484016";
+         value = "266304";
          type = "String";
       }
    }
@@ -77,31 +77,71 @@
    {
       datum baseAddress
       {
-         value = "134484064";
+         value = "266352";
          type = "String";
       }
    }
-   element mailbox_simple_0
+   element jtag_uart_FFT
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "16";
          type = "int";
       }
    }
-   element mailbox_simple_0.avmm_msg_receiver
+   element jtag_uart_FFT.avalon_jtag_slave
+   {
+      datum baseAddress
+      {
+         value = "266336";
+         type = "String";
+      }
+   }
+   element mailbox_to_FFT
+   {
+      datum _sortIndex
+      {
+         value = "17";
+         type = "int";
+      }
+   }
+   element mailbox_to_FFT.avmm_msg_receiver
+   {
+      datum baseAddress
+      {
+         value = "266304";
+         type = "String";
+      }
+   }
+   element mailbox_to_FFT.avmm_msg_sender
+   {
+      datum baseAddress
+      {
+         value = "266288";
+         type = "String";
+      }
+   }
+   element mailbox_to_Sound_Acquisition
+   {
+      datum _sortIndex
+      {
+         value = "18";
+         type = "int";
+      }
+   }
+   element mailbox_to_Sound_Acquisition.avmm_msg_receiver
+   {
+      datum baseAddress
+      {
+         value = "266240";
+         type = "String";
+      }
+   }
+   element mailbox_to_Sound_Acquisition.avmm_msg_sender
    {
       datum baseAddress
       {
          value = "266272";
-         type = "String";
-      }
-   }
-   element mailbox_simple_0.avmm_msg_sender
-   {
-      datum baseAddress
-      {
-         value = "134483968";
          type = "String";
       }
    }
@@ -117,7 +157,7 @@
    {
       datum baseAddress
       {
-         value = "134484048";
+         value = "266328";
          type = "String";
       }
    }
@@ -149,7 +189,7 @@
    {
       datum baseAddress
       {
-         value = "134481920";
+         value = "264192";
          type = "String";
       }
    }
@@ -165,7 +205,7 @@
    {
       datum baseAddress
       {
-         value = "134348800";
+         value = "131072";
          type = "String";
       }
    }
@@ -197,7 +237,7 @@
    {
       datum baseAddress
       {
-         value = "134483984";
+         value = "266256";
          type = "String";
       }
    }
@@ -213,7 +253,7 @@
    {
       datum baseAddress
       {
-         value = "134484000";
+         value = "266272";
          type = "String";
       }
    }
@@ -253,7 +293,7 @@
    {
       datum baseAddress
       {
-         value = "134484056";
+         value = "266320";
          type = "String";
       }
    }
@@ -261,7 +301,7 @@
    {
       datum _sortIndex
       {
-         value = "16";
+         value = "15";
          type = "int";
       }
    }
@@ -426,14 +466,43 @@
   <parameter name="writeIRQThreshold" value="8" />
  </module>
  <module
-   name="mailbox_simple_0"
+   name="jtag_uart_FFT"
+   kind="altera_avalon_jtag_uart"
+   version="18.0"
+   enabled="1">
+  <parameter name="allowMultipleConnections" value="false" />
+  <parameter name="avalonSpec" value="2.0" />
+  <parameter name="clkFreq" value="50000000" />
+  <parameter name="hubInstanceID" value="0" />
+  <parameter name="readBufferDepth" value="64" />
+  <parameter name="readIRQThreshold" value="8" />
+  <parameter name="simInputCharacterStream" value="" />
+  <parameter name="simInteractiveOptions">NO_INTERACTIVE_WINDOWS</parameter>
+  <parameter name="useRegistersForReadBuffer" value="false" />
+  <parameter name="useRegistersForWriteBuffer" value="false" />
+  <parameter name="useRelativePathForSimFile" value="false" />
+  <parameter name="writeBufferDepth" value="64" />
+  <parameter name="writeIRQThreshold" value="8" />
+ </module>
+ <module
+   name="mailbox_to_FFT"
    kind="altera_avalon_mailbox_simple"
    version="18.0"
    enabled="1">
   <parameter name="AWIDTH" value="2" />
   <parameter name="DWIDTH" value="32" />
   <parameter name="MSG_ARRIVAL_NOTIFY" value="1" />
-  <parameter name="MSG_SPACE_NOTIFY" value="0" />
+  <parameter name="MSG_SPACE_NOTIFY" value="1" />
+ </module>
+ <module
+   name="mailbox_to_Sound_Acquisition"
+   kind="altera_avalon_mailbox_simple"
+   version="18.0"
+   enabled="1">
+  <parameter name="AWIDTH" value="2" />
+  <parameter name="DWIDTH" value="32" />
+  <parameter name="MSG_ARRIVAL_NOTIFY" value="1" />
+  <parameter name="MSG_SPACE_NOTIFY" value="1" />
  </module>
  <module
    name="mutex_SDRAM"
@@ -460,10 +529,10 @@
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
-  <parameter name="dataAddrWidth" value="28" />
+  <parameter name="dataAddrWidth" value="19" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='uart_0.s1' start='0x41000' end='0x41020' type='altera_avalon_uart.s1' /><slave name='mailbox_simple_0.avmm_msg_receiver' start='0x41020' end='0x41030' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='pio_switches.s1' start='0x41030' end='0x41040' type='altera_avalon_pio.s1' /><slave name='mutex_SDRAM.s1' start='0x8041050' end='0x8041058' type='altera_avalon_mutex.s1' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='uart_0.s1' start='0x41000' end='0x41020' type='altera_avalon_uart.s1' /><slave name='mailbox_to_Sound_Acquisition.avmm_msg_sender' start='0x41020' end='0x41030' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='pio_switches.s1' start='0x41030' end='0x41040' type='altera_avalon_pio.s1' /><slave name='mailbox_to_FFT.avmm_msg_receiver' start='0x41040' end='0x41050' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='sysid_qsys_0.control_slave' start='0x41050' end='0x41058' type='altera_avalon_sysid_qsys.control_slave' /><slave name='mutex_SDRAM.s1' start='0x41058' end='0x41060' type='altera_avalon_mutex.s1' /><slave name='jtag_uart_FFT.avalon_jtag_slave' start='0x41060' end='0x41068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -509,7 +578,7 @@
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="3" />
+  <parameter name="internalIrqMaskSystemInfo" value="31" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -645,7 +714,7 @@
   <parameter name="dataAddrWidth" value="28" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='SDRAM_controller.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='onchip_memory.s1' start='0x8020000' end='0x8040000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_sound_acquisition.debug_mem_slave' start='0x8040800' end='0x8041000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='mailbox_simple_0.avmm_msg_sender' start='0x8041000' end='0x8041010' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='pio_LEDS.s1' start='0x8041010' end='0x8041020' type='altera_avalon_pio.s1' /><slave name='pio_buttons.s1' start='0x8041020' end='0x8041030' type='altera_avalon_pio.s1' /><slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x8041030' end='0x8041040' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='audio_0.avalon_audio_slave' start='0x8041040' end='0x8041050' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='mutex_SDRAM.s1' start='0x8041050' end='0x8041058' type='altera_avalon_mutex.s1' /><slave name='sysid_qsys_0.control_slave' start='0x8041058' end='0x8041060' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x8041060' end='0x8041068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_sound_acquisition.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='mailbox_to_Sound_Acquisition.avmm_msg_receiver' start='0x41000' end='0x41010' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='pio_LEDS.s1' start='0x41010' end='0x41020' type='altera_avalon_pio.s1' /><slave name='pio_buttons.s1' start='0x41020' end='0x41030' type='altera_avalon_pio.s1' /><slave name='mailbox_to_FFT.avmm_msg_sender' start='0x41030' end='0x41040' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x41040' end='0x41050' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='sysid_qsys_0.control_slave' start='0x41050' end='0x41058' type='altera_avalon_sysid_qsys.control_slave' /><slave name='mutex_SDRAM.s1' start='0x41058' end='0x41060' type='altera_avalon_mutex.s1' /><slave name='audio_0.avalon_audio_slave' start='0x41060' end='0x41070' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x41070' end='0x41078' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='SDRAM_controller.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -684,14 +753,14 @@
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Fast" />
   <parameter name="instAddrWidth" value="28" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='SDRAM_controller.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='onchip_memory.s1' start='0x8020000' end='0x8040000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_sound_acquisition.debug_mem_slave' start='0x8040800' end='0x8041000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_sound_acquisition.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='SDRAM_controller.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="7" />
+  <parameter name="internalIrqMaskSystemInfo" value="31" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -1149,7 +1218,7 @@
    start="nios2_sound_acquisition.data_master"
    end="audio_0.avalon_audio_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08041040" />
+  <parameter name="baseAddress" value="0x00041060" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1158,7 +1227,7 @@
    start="nios2_sound_acquisition.data_master"
    end="audio_and_video_config_0.avalon_av_config_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08041030" />
+  <parameter name="baseAddress" value="0x00041040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1167,14 +1236,50 @@
    start="nios2_sound_acquisition.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08041060" />
+  <parameter name="baseAddress" value="0x00041070" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.0"
    start="nios2_FFT.data_master"
-   end="mailbox_simple_0.avmm_msg_receiver">
+   end="jtag_uart_FFT.avalon_jtag_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00041060" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="nios2_FFT.data_master"
+   end="mailbox_to_FFT.avmm_msg_receiver">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00041040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="nios2_sound_acquisition.data_master"
+   end="mailbox_to_Sound_Acquisition.avmm_msg_receiver">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00041000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="nios2_sound_acquisition.data_master"
+   end="mailbox_to_FFT.avmm_msg_sender">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00041030" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="nios2_FFT.data_master"
+   end="mailbox_to_Sound_Acquisition.avmm_msg_sender">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00041020" />
   <parameter name="defaultConnection" value="false" />
@@ -1183,18 +1288,18 @@
    kind="avalon"
    version="18.0"
    start="nios2_sound_acquisition.data_master"
-   end="mailbox_simple_0.avmm_msg_sender">
+   end="sysid_qsys_0.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08041000" />
+  <parameter name="baseAddress" value="0x00041050" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.0"
-   start="nios2_sound_acquisition.data_master"
+   start="nios2_FFT.data_master"
    end="sysid_qsys_0.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08041058" />
+  <parameter name="baseAddress" value="0x00041050" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1203,7 +1308,7 @@
    start="nios2_sound_acquisition.data_master"
    end="nios2_sound_acquisition.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08040800" />
+  <parameter name="baseAddress" value="0x00040800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1221,7 +1326,7 @@
    start="nios2_sound_acquisition.data_master"
    end="onchip_memory.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08020000" />
+  <parameter name="baseAddress" value="0x00020000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1230,7 +1335,7 @@
    start="nios2_sound_acquisition.data_master"
    end="SDRAM_controller.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04000000" />
+  <parameter name="baseAddress" value="0x08000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1239,7 +1344,7 @@
    start="nios2_sound_acquisition.data_master"
    end="pio_buttons.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08041020" />
+  <parameter name="baseAddress" value="0x00041020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1248,7 +1353,7 @@
    start="nios2_sound_acquisition.data_master"
    end="pio_LEDS.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08041010" />
+  <parameter name="baseAddress" value="0x00041010" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1275,7 +1380,7 @@
    start="nios2_sound_acquisition.data_master"
    end="mutex_SDRAM.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08041050" />
+  <parameter name="baseAddress" value="0x00041058" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1284,7 +1389,7 @@
    start="nios2_FFT.data_master"
    end="mutex_SDRAM.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08041050" />
+  <parameter name="baseAddress" value="0x00041058" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1302,7 +1407,7 @@
    start="nios2_sound_acquisition.instruction_master"
    end="nios2_sound_acquisition.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08040800" />
+  <parameter name="baseAddress" value="0x00040800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1320,7 +1425,7 @@
    start="nios2_sound_acquisition.instruction_master"
    end="onchip_memory.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08020000" />
+  <parameter name="baseAddress" value="0x00020000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1329,7 +1434,7 @@
    start="nios2_sound_acquisition.instruction_master"
    end="SDRAM_controller.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04000000" />
+  <parameter name="baseAddress" value="0x08000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1372,8 +1477,18 @@
    kind="clock"
    version="18.0"
    start="pll.outclk0"
-   end="mailbox_simple_0.clk" />
+   end="mailbox_to_FFT.clk" />
  <connection kind="clock" version="18.0" start="pll.outclk0" end="uart_0.clk" />
+ <connection
+   kind="clock"
+   version="18.0"
+   start="pll.outclk0"
+   end="jtag_uart_FFT.clk" />
+ <connection
+   kind="clock"
+   version="18.0"
+   start="pll.outclk0"
+   end="mailbox_to_Sound_Acquisition.clk" />
  <connection
    kind="clock"
    version="18.0"
@@ -1399,9 +1514,30 @@
  <connection
    kind="interrupt"
    version="18.0"
+   start="nios2_sound_acquisition.irq"
+   end="mailbox_to_FFT.interrupt_mb_available">
+  <parameter name="irqNumber" value="3" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.0"
    start="nios2_FFT.irq"
-   end="mailbox_simple_0.interrupt_msg_pending">
+   end="mailbox_to_Sound_Acquisition.interrupt_mb_available">
+  <parameter name="irqNumber" value="4" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.0"
+   start="nios2_FFT.irq"
+   end="mailbox_to_FFT.interrupt_msg_pending">
   <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.0"
+   start="nios2_sound_acquisition.irq"
+   end="mailbox_to_Sound_Acquisition.interrupt_msg_pending">
+  <parameter name="irqNumber" value="4" />
  </connection>
  <connection
    kind="interrupt"
@@ -1423,6 +1559,20 @@
    start="nios2_FFT.irq"
    end="uart_0.irq">
   <parameter name="irqNumber" value="1" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.0"
+   start="nios2_FFT.irq"
+   end="jtag_uart_FFT.irq">
+  <parameter name="irqNumber" value="2" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.0"
+   start="nios2_FFT.irq"
+   end="pio_switches.irq">
+  <parameter name="irqNumber" value="3" />
  </connection>
  <connection
    kind="reset"
@@ -1489,6 +1639,11 @@
    kind="reset"
    version="18.0"
    start="clk_0.clk_reset"
+   end="jtag_uart_FFT.reset" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="clk_0.clk_reset"
    end="onchip_memory.reset1" />
  <connection
    kind="reset"
@@ -1499,7 +1654,12 @@
    kind="reset"
    version="18.0"
    start="clk_0.clk_reset"
-   end="mailbox_simple_0.rst_n" />
+   end="mailbox_to_FFT.rst_n" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="clk_0.clk_reset"
+   end="mailbox_to_Sound_Acquisition.rst_n" />
  <connection
    kind="reset"
    version="18.0"
@@ -1633,6 +1793,16 @@
  <connection
    kind="reset"
    version="18.0"
+   start="nios2_FFT.debug_reset_request"
+   end="jtag_uart_FFT.reset" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="nios2_sound_acquisition.debug_reset_request"
+   end="jtag_uart_FFT.reset" />
+ <connection
+   kind="reset"
+   version="18.0"
    start="nios2_sound_acquisition.debug_reset_request"
    end="onchip_memory.reset1" />
  <connection
@@ -1654,12 +1824,22 @@
    kind="reset"
    version="18.0"
    start="nios2_sound_acquisition.debug_reset_request"
-   end="mailbox_simple_0.rst_n" />
+   end="mailbox_to_FFT.rst_n" />
  <connection
    kind="reset"
    version="18.0"
    start="nios2_FFT.debug_reset_request"
-   end="mailbox_simple_0.rst_n" />
+   end="mailbox_to_FFT.rst_n" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="nios2_FFT.debug_reset_request"
+   end="mailbox_to_Sound_Acquisition.rst_n" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="nios2_sound_acquisition.debug_reset_request"
+   end="mailbox_to_Sound_Acquisition.rst_n" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

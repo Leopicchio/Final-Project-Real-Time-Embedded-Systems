@@ -1,16 +1,16 @@
-Fitter Status : Successful - Wed Jun 10 16:34:52 2020
+Fitter Status : Successful - Thu Jun 11 20:09:34 2020
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : Lab4
 Top-level Entity Name : Lab
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 3,625 / 32,070 ( 11 % )
-Total registers : 5746
+Logic utilization (in ALMs) : 3,770 / 32,070 ( 12 % )
+Total registers : 6029
 Total pins : 108 / 457 ( 24 % )
 Total virtual pins : 0
-Total block memory bits : 2,242,432 / 4,065,280 ( 55 % )
-Total RAM Blocks : 289 / 397 ( 73 % )
+Total block memory bits : 2,242,880 / 4,065,280 ( 55 % )
+Total RAM Blocks : 291 / 397 ( 73 % )
 Total DSP Blocks : 6 / 87 ( 7 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
