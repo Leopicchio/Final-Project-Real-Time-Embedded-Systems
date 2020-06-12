@@ -142,10 +142,7 @@ ACDS_VERSION := 18.1
 ELF := sound_treatment.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += hello_world.c
-C_SRCS += data_processor.c
-C_SRCS += kiss_fft.c
-C_SRCS += wawfile.c
+C_SRCS := hello_world.c
 CXX_SRCS :=
 ASM_SRCS :=
 

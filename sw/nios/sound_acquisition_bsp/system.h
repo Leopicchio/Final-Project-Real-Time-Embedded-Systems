@@ -2,9 +2,9 @@
  * system.h - SOPC Builder system and BSP software package information
  *
  * Machine generated for CPU 'nios2_sound_acquisition' in SOPC Builder design 'main_system'
- * SOPC Builder design path: ../../main_system.sopcinfo
+ * SOPC Builder design path: /home/vm/Final-Project-Real-Time-Embedded-Systems/hw/quartus/main_system.sopcinfo
  *
- * Generated: Wed Jun 10 16:48:30 CEST 2020
+ * Generated: Thu Jun 11 17:34:31 CEST 2020
  */
 
 /*
@@ -412,7 +412,7 @@
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1591798994
+#define SYSID_QSYS_0_TIMESTAMP 1591884992
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 #endif /* __SYSTEM_H_ */

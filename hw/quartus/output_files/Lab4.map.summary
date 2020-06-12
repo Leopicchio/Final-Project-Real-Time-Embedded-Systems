@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Wed Jun 10 23:55:30 2020
+Analysis & Synthesis Status : Successful - Thu Jun 11 16:24:30 2020
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : Lab4
 Top-level Entity Name : Lab
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 5560
+Total registers : 5802
 Total pins : 108
 Total virtual pins : 0
-Total block memory bits : 2,242,432
+Total block memory bits : 2,243,456
 Total DSP Blocks : 6
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

@@ -77,16 +77,16 @@ ALT_CPPFLAGS += -pipe
 
 # This following VERSION comment indicates the version of the tool used to 
 # generate this makefile. A makefile variable is provided for VERSION as well. 
-# ACDS_VERSION: 18.0
-ACDS_VERSION := 18.0
+# ACDS_VERSION: 18.1
+ACDS_VERSION := 18.1
 
 # This following BUILD_NUMBER comment indicates the build number of the tool 
 # used to generate this makefile. 
-# BUILD_NUMBER: 614
+# BUILD_NUMBER: 625
 
 # Qsys--generated SOPCINFO file. Required for resolving node instance ID's with 
 # design component names. 
-SOPCINFO_FILE := $(ABS_BSP_ROOT_DIR)/../../main_system.sopcinfo
+SOPCINFO_FILE := /home/vm/Final-Project-Real-Time-Embedded-Systems/hw/quartus/main_system.sopcinfo
 
 # Big-Endian operation. 
 # setting BIG_ENDIAN is false
@@ -157,9 +157,9 @@ SOPC_SYSID_FLAG += --sidp=0x8041058
 ELF_PATCH_FLAG  += --sidp 0x8041058
 
 # The SOPC Timestamp 
-# setting SOPC_TIMESTAMP is 1591798994
-SOPC_SYSID_FLAG += --timestamp=1591798994
-ELF_PATCH_FLAG  += --timestamp 1591798994
+# setting SOPC_TIMESTAMP is 1591884992
+SOPC_SYSID_FLAG += --timestamp=1591884992
+ELF_PATCH_FLAG  += --timestamp 1591884992
 
 # Enable JTAG UART driver to recover when host is inactive causing buffer to 
 # full without returning error. Printf will not fail with this recovery. none 

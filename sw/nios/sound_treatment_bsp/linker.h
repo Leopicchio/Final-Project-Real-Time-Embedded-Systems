@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_FFT' in SOPC Builder design 'main_system'
  * SOPC Builder design path: /home/vm/Final-Project-Real-Time-Embedded-Systems/hw/quartus/main_system.sopcinfo
  *
- * Generated: Wed Jun 10 23:30:33 CEST 2020
+ * Generated: Thu Jun 11 17:29:19 CEST 2020
  */
 
 /*

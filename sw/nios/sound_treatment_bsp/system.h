@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_FFT' in SOPC Builder design 'main_system'
  * SOPC Builder design path: /home/vm/Final-Project-Real-Time-Embedded-Systems/hw/quartus/main_system.sopcinfo
  *
- * Generated: Wed Jun 10 23:30:33 CEST 2020
+ * Generated: Thu Jun 11 17:29:19 CEST 2020
  */
 
 /*
@@ -141,6 +141,7 @@
  *
  */
 
+#define __ALTERA_AVALON_JTAG_UART
 #define __ALTERA_AVALON_MAILBOX_SIMPLE
 #define __ALTERA_AVALON_MUTEX
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
@@ -164,24 +165,24 @@
 #define ALT_NUM_EXTERNAL_INTERRUPT_CONTROLLERS 0
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
-#define ALT_STDERR "/dev/uart_0"
-#define ALT_STDERR_BASE 0x41000
-#define ALT_STDERR_DEV uart_0
-#define ALT_STDERR_IS_UART
+#define ALT_STDERR "/dev/jtag_uart_1"
+#define ALT_STDERR_BASE 0x0
+#define ALT_STDERR_DEV jtag_uart_1
+#define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
-#define ALT_STDERR_TYPE "altera_avalon_uart"
-#define ALT_STDIN "/dev/uart_0"
-#define ALT_STDIN_BASE 0x41000
-#define ALT_STDIN_DEV uart_0
-#define ALT_STDIN_IS_UART
+#define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
+#define ALT_STDIN "/dev/jtag_uart_1"
+#define ALT_STDIN_BASE 0x0
+#define ALT_STDIN_DEV jtag_uart_1
+#define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
-#define ALT_STDIN_TYPE "altera_avalon_uart"
-#define ALT_STDOUT "/dev/uart_0"
-#define ALT_STDOUT_BASE 0x41000
-#define ALT_STDOUT_DEV uart_0
-#define ALT_STDOUT_IS_UART
+#define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
+#define ALT_STDOUT "/dev/jtag_uart_1"
+#define ALT_STDOUT_BASE 0x0
+#define ALT_STDOUT_DEV jtag_uart_1
+#define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
-#define ALT_STDOUT_TYPE "altera_avalon_uart"
+#define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
 #define ALT_SYSTEM_NAME "main_system"
 
 
@@ -194,6 +195,24 @@
 #define ALT_MAX_FD 32
 #define ALT_SYS_CLK none
 #define ALT_TIMESTAMP_CLK none
+
+
+/*
+ * jtag_uart_1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_jtag_uart_1 altera_avalon_jtag_uart
+#define JTAG_UART_1_BASE 0x0
+#define JTAG_UART_1_IRQ 2
+#define JTAG_UART_1_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define JTAG_UART_1_NAME "/dev/jtag_uart_1"
+#define JTAG_UART_1_READ_DEPTH 64
+#define JTAG_UART_1_READ_THRESHOLD 8
+#define JTAG_UART_1_SPAN 8
+#define JTAG_UART_1_TYPE "altera_avalon_jtag_uart"
+#define JTAG_UART_1_WRITE_DEPTH 64
+#define JTAG_UART_1_WRITE_THRESHOLD 8
 
 
 /*

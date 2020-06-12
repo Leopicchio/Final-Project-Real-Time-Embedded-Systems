@@ -31,7 +31,7 @@ module main_system (
 		output wire        uart_0_external_connection_txd                    //                                            .txd
 	);
 
-	wire         pll_outclk0_clk;                                                               // pll:outclk_0 -> [audio_0:clk, audio_and_video_config_0:clk, irq_mapper:clk, irq_mapper_001:clk, jtag_uart_0:clk, mailbox_simple_0:clk, mm_interconnect_0:pll_outclk0_clk, mutex_SDRAM:clk, nios2_FFT:clk, nios2_sound_acquisition:clk, onchip_memory:clk, onchip_memory_nios2_FFT:clk, pio_LEDS:clk, pio_buttons:clk, pio_switches:clk, rst_controller_001:clk, sysid_qsys_0:clock, uart_0:clk]
+	wire         pll_outclk0_clk;                                                               // pll:outclk_0 -> [audio_0:clk, audio_and_video_config_0:clk, irq_mapper:clk, irq_mapper_001:clk, jtag_uart_0:clk, jtag_uart_1:clk, mailbox_simple_0:clk, mm_interconnect_0:pll_outclk0_clk, mutex_SDRAM:clk, nios2_FFT:clk, nios2_sound_acquisition:clk, onchip_memory:clk, onchip_memory_nios2_FFT:clk, pio_LEDS:clk, pio_buttons:clk, pio_switches:clk, rst_controller_001:clk, rst_controller_002:clk, sysid_qsys_0:clock, uart_0:clk]
 	wire         pll_outclk1_clk;                                                               // pll:outclk_1 -> [SDRAM_controller:clk, mm_interconnect_0:pll_outclk1_clk, rst_controller:clk]
 	wire  [31:0] nios2_sound_acquisition_data_master_readdata;                                  // mm_interconnect_0:nios2_sound_acquisition_data_master_readdata -> nios2_sound_acquisition:d_readdata
 	wire         nios2_sound_acquisition_data_master_waitrequest;                               // mm_interconnect_0:nios2_sound_acquisition_data_master_waitrequest -> nios2_sound_acquisition:d_waitrequest
@@ -129,6 +129,13 @@ module main_system (
 	wire         mm_interconnect_0_mutex_sdram_s1_read;                                         // mm_interconnect_0:mutex_SDRAM_s1_read -> mutex_SDRAM:read
 	wire         mm_interconnect_0_mutex_sdram_s1_write;                                        // mm_interconnect_0:mutex_SDRAM_s1_write -> mutex_SDRAM:write
 	wire  [31:0] mm_interconnect_0_mutex_sdram_s1_writedata;                                    // mm_interconnect_0:mutex_SDRAM_s1_writedata -> mutex_SDRAM:data_from_cpu
+	wire         mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_chipselect;                    // mm_interconnect_0:jtag_uart_1_avalon_jtag_slave_chipselect -> jtag_uart_1:av_chipselect
+	wire  [31:0] mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_readdata;                      // jtag_uart_1:av_readdata -> mm_interconnect_0:jtag_uart_1_avalon_jtag_slave_readdata
+	wire         mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_waitrequest;                   // jtag_uart_1:av_waitrequest -> mm_interconnect_0:jtag_uart_1_avalon_jtag_slave_waitrequest
+	wire   [0:0] mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_address;                       // mm_interconnect_0:jtag_uart_1_avalon_jtag_slave_address -> jtag_uart_1:av_address
+	wire         mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_read;                          // mm_interconnect_0:jtag_uart_1_avalon_jtag_slave_read -> jtag_uart_1:av_read_n
+	wire         mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_write;                         // mm_interconnect_0:jtag_uart_1_avalon_jtag_slave_write -> jtag_uart_1:av_write_n
+	wire  [31:0] mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_writedata;                     // mm_interconnect_0:jtag_uart_1_avalon_jtag_slave_writedata -> jtag_uart_1:av_writedata
 	wire  [31:0] mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_readdata;                 // mailbox_simple_0:avmm_rcv_readdata -> mm_interconnect_0:mailbox_simple_0_avmm_msg_receiver_readdata
 	wire   [1:0] mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_address;                  // mm_interconnect_0:mailbox_simple_0_avmm_msg_receiver_address -> mailbox_simple_0:avmm_rcv_address
 	wire         mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_read;                     // mm_interconnect_0:mailbox_simple_0_avmm_msg_receiver_read -> mailbox_simple_0:avmm_rcv_read
@@ -163,17 +170,19 @@ module main_system (
 	wire  [15:0] mm_interconnect_0_uart_0_s1_writedata;                                         // mm_interconnect_0:uart_0_s1_writedata -> uart_0:writedata
 	wire         irq_mapper_receiver0_irq;                                                      // mailbox_simple_0:irq_msg -> irq_mapper:receiver0_irq
 	wire         irq_mapper_receiver1_irq;                                                      // uart_0:irq -> irq_mapper:receiver1_irq
+	wire         irq_mapper_receiver2_irq;                                                      // jtag_uart_1:av_irq -> irq_mapper:receiver2_irq
 	wire  [31:0] nios2_fft_irq_irq;                                                             // irq_mapper:sender_irq -> nios2_FFT:irq
 	wire         irq_mapper_001_receiver0_irq;                                                  // audio_0:irq -> irq_mapper_001:receiver0_irq
 	wire         irq_mapper_001_receiver1_irq;                                                  // jtag_uart_0:av_irq -> irq_mapper_001:receiver1_irq
 	wire         irq_mapper_001_receiver2_irq;                                                  // pio_buttons:irq -> irq_mapper_001:receiver2_irq
 	wire  [31:0] nios2_sound_acquisition_irq_irq;                                               // irq_mapper_001:sender_irq -> nios2_sound_acquisition:irq
 	wire         rst_controller_reset_out_reset;                                                // rst_controller:reset_out -> [SDRAM_controller:reset_n, mm_interconnect_0:SDRAM_controller_reset_reset_bridge_in_reset_reset]
-	wire         nios2_sound_acquisition_debug_reset_request_reset;                             // nios2_sound_acquisition:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_002:reset_in1]
-	wire         nios2_fft_debug_reset_request_reset;                                           // nios2_FFT:debug_reset_request -> [rst_controller:reset_in2, rst_controller_001:reset_in2, rst_controller_002:reset_in2]
+	wire         nios2_sound_acquisition_debug_reset_request_reset;                             // nios2_sound_acquisition:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_003:reset_in1]
+	wire         nios2_fft_debug_reset_request_reset;                                           // nios2_FFT:debug_reset_request -> [rst_controller:reset_in2, rst_controller_001:reset_in2, rst_controller_002:reset_in1, rst_controller_003:reset_in2]
 	wire         rst_controller_001_reset_out_reset;                                            // rst_controller_001:reset_out -> [audio_0:reset, audio_and_video_config_0:reset, irq_mapper:reset, irq_mapper_001:reset, jtag_uart_0:rst_n, mailbox_simple_0:rst_n, mm_interconnect_0:nios2_sound_acquisition_reset_reset_bridge_in_reset_reset, mutex_SDRAM:reset_n, nios2_FFT:reset_n, nios2_sound_acquisition:reset_n, onchip_memory:reset, onchip_memory_nios2_FFT:reset, pio_LEDS:reset_n, pio_buttons:reset_n, pio_switches:reset_n, rst_translator:in_reset, sysid_qsys_0:reset_n, uart_0:reset_n]
 	wire         rst_controller_001_reset_out_reset_req;                                        // rst_controller_001:reset_req -> [nios2_FFT:reset_req, nios2_sound_acquisition:reset_req, onchip_memory:reset_req, onchip_memory_nios2_FFT:reset_req, rst_translator:reset_req_in]
-	wire         rst_controller_002_reset_out_reset;                                            // rst_controller_002:reset_out -> pll:rst
+	wire         rst_controller_002_reset_out_reset;                                            // rst_controller_002:reset_out -> [jtag_uart_1:rst_n, mm_interconnect_0:jtag_uart_1_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_003_reset_out_reset;                                            // rst_controller_003:reset_out -> pll:rst
 
 	main_system_SDRAM_controller sdram_controller (
 		.clk            (pll_outclk1_clk),                                     //   clk.clk
@@ -240,6 +249,19 @@ module main_system (
 		.av_writedata   (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata),   //                  .writedata
 		.av_waitrequest (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest), //                  .waitrequest
 		.av_irq         (irq_mapper_001_receiver1_irq)                                 //               irq.irq
+	);
+
+	main_system_jtag_uart_0 jtag_uart_1 (
+		.clk            (pll_outclk0_clk),                                             //               clk.clk
+		.rst_n          (~rst_controller_002_reset_out_reset),                         //             reset.reset_n
+		.av_chipselect  (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
+		.av_address     (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_address),     //                  .address
+		.av_read_n      (~mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_read),       //                  .read_n
+		.av_readdata    (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_readdata),    //                  .readdata
+		.av_write_n     (~mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_write),      //                  .write_n
+		.av_writedata   (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_writedata),   //                  .writedata
+		.av_waitrequest (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_waitrequest), //                  .waitrequest
+		.av_irq         (irq_mapper_receiver2_irq)                                     //               irq.irq
 	);
 
 	altera_avalon_mailbox #(
@@ -401,7 +423,7 @@ module main_system (
 
 	main_system_pll pll (
 		.refclk   (clk_clk),                            //  refclk.clk
-		.rst      (rst_controller_002_reset_out_reset), //   reset.reset
+		.rst      (rst_controller_003_reset_out_reset), //   reset.reset
 		.outclk_0 (pll_outclk0_clk),                    // outclk0.clk
 		.outclk_1 (pll_outclk1_clk),                    // outclk1.clk
 		.outclk_2 (clk_sdram_clk),                      // outclk2.clk
@@ -434,6 +456,7 @@ module main_system (
 	main_system_mm_interconnect_0 mm_interconnect_0 (
 		.pll_outclk0_clk                                             (pll_outclk0_clk),                                                               //                                         pll_outclk0.clk
 		.pll_outclk1_clk                                             (pll_outclk1_clk),                                                               //                                         pll_outclk1.clk
+		.jtag_uart_1_reset_reset_bridge_in_reset_reset               (rst_controller_002_reset_out_reset),                                            //             jtag_uart_1_reset_reset_bridge_in_reset.reset
 		.nios2_sound_acquisition_reset_reset_bridge_in_reset_reset   (rst_controller_001_reset_out_reset),                                            // nios2_sound_acquisition_reset_reset_bridge_in_reset.reset
 		.SDRAM_controller_reset_reset_bridge_in_reset_reset          (rst_controller_reset_out_reset),                                                //        SDRAM_controller_reset_reset_bridge_in_reset.reset
 		.nios2_FFT_data_master_address                               (nios2_fft_data_master_address),                                                 //                               nios2_FFT_data_master.address
@@ -484,6 +507,13 @@ module main_system (
 		.jtag_uart_0_avalon_jtag_slave_writedata                     (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata),                     //                                                    .writedata
 		.jtag_uart_0_avalon_jtag_slave_waitrequest                   (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest),                   //                                                    .waitrequest
 		.jtag_uart_0_avalon_jtag_slave_chipselect                    (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect),                    //                                                    .chipselect
+		.jtag_uart_1_avalon_jtag_slave_address                       (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_address),                       //                       jtag_uart_1_avalon_jtag_slave.address
+		.jtag_uart_1_avalon_jtag_slave_write                         (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_write),                         //                                                    .write
+		.jtag_uart_1_avalon_jtag_slave_read                          (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_read),                          //                                                    .read
+		.jtag_uart_1_avalon_jtag_slave_readdata                      (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_readdata),                      //                                                    .readdata
+		.jtag_uart_1_avalon_jtag_slave_writedata                     (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_writedata),                     //                                                    .writedata
+		.jtag_uart_1_avalon_jtag_slave_waitrequest                   (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_waitrequest),                   //                                                    .waitrequest
+		.jtag_uart_1_avalon_jtag_slave_chipselect                    (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_chipselect),                    //                                                    .chipselect
 		.mailbox_simple_0_avmm_msg_receiver_address                  (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_address),                  //                  mailbox_simple_0_avmm_msg_receiver.address
 		.mailbox_simple_0_avmm_msg_receiver_write                    (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_write),                    //                                                    .write
 		.mailbox_simple_0_avmm_msg_receiver_read                     (mm_interconnect_0_mailbox_simple_0_avmm_msg_receiver_read),                     //                                                    .read
@@ -571,10 +601,11 @@ module main_system (
 		.reset         (rst_controller_001_reset_out_reset), // clk_reset.reset
 		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
 		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
+		.receiver2_irq (irq_mapper_receiver2_irq),           // receiver2.irq
 		.sender_irq    (nios2_fft_irq_irq)                   //    sender.irq
 	);
 
-	main_system_irq_mapper_001 irq_mapper_001 (
+	main_system_irq_mapper irq_mapper_001 (
 		.clk           (pll_outclk0_clk),                    //       clk.clk
 		.reset         (rst_controller_001_reset_out_reset), // clk_reset.reset
 		.receiver0_irq (irq_mapper_001_receiver0_irq),       // receiver0.irq
@@ -710,6 +741,69 @@ module main_system (
 	);
 
 	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (2),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_002 (
+		.reset_in0      (~reset_reset_n),                      // reset_in0.reset
+		.reset_in1      (nios2_fft_debug_reset_request_reset), // reset_in1.reset
+		.clk            (pll_outclk0_clk),                     //       clk.clk
+		.reset_out      (rst_controller_002_reset_out_reset),  // reset_out.reset
+		.reset_req      (),                                    // (terminated)
+		.reset_req_in0  (1'b0),                                // (terminated)
+		.reset_req_in1  (1'b0),                                // (terminated)
+		.reset_in2      (1'b0),                                // (terminated)
+		.reset_req_in2  (1'b0),                                // (terminated)
+		.reset_in3      (1'b0),                                // (terminated)
+		.reset_req_in3  (1'b0),                                // (terminated)
+		.reset_in4      (1'b0),                                // (terminated)
+		.reset_req_in4  (1'b0),                                // (terminated)
+		.reset_in5      (1'b0),                                // (terminated)
+		.reset_req_in5  (1'b0),                                // (terminated)
+		.reset_in6      (1'b0),                                // (terminated)
+		.reset_req_in6  (1'b0),                                // (terminated)
+		.reset_in7      (1'b0),                                // (terminated)
+		.reset_req_in7  (1'b0),                                // (terminated)
+		.reset_in8      (1'b0),                                // (terminated)
+		.reset_req_in8  (1'b0),                                // (terminated)
+		.reset_in9      (1'b0),                                // (terminated)
+		.reset_req_in9  (1'b0),                                // (terminated)
+		.reset_in10     (1'b0),                                // (terminated)
+		.reset_req_in10 (1'b0),                                // (terminated)
+		.reset_in11     (1'b0),                                // (terminated)
+		.reset_req_in11 (1'b0),                                // (terminated)
+		.reset_in12     (1'b0),                                // (terminated)
+		.reset_req_in12 (1'b0),                                // (terminated)
+		.reset_in13     (1'b0),                                // (terminated)
+		.reset_req_in13 (1'b0),                                // (terminated)
+		.reset_in14     (1'b0),                                // (terminated)
+		.reset_req_in14 (1'b0),                                // (terminated)
+		.reset_in15     (1'b0),                                // (terminated)
+		.reset_req_in15 (1'b0)                                 // (terminated)
+	);
+
+	altera_reset_controller #(
 		.NUM_RESET_INPUTS          (3),
 		.OUTPUT_RESET_SYNC_EDGES   ("none"),
 		.SYNC_DEPTH                (2),
@@ -734,12 +828,12 @@ module main_system (
 		.USE_RESET_REQUEST_IN14    (0),
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_002 (
+	) rst_controller_003 (
 		.reset_in0      (~reset_reset_n),                                    // reset_in0.reset
 		.reset_in1      (nios2_sound_acquisition_debug_reset_request_reset), // reset_in1.reset
 		.reset_in2      (nios2_fft_debug_reset_request_reset),               // reset_in2.reset
 		.clk            (),                                                  //       clk.clk
-		.reset_out      (rst_controller_002_reset_out_reset),                // reset_out.reset
+		.reset_out      (rst_controller_003_reset_out_reset),                // reset_out.reset
 		.reset_req      (),                                                  // (terminated)
 		.reset_req_in0  (1'b0),                                              // (terminated)
 		.reset_req_in1  (1'b0),                                              // (terminated)

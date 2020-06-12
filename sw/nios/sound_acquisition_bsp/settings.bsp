@@ -2,11 +2,11 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>10.06.2020 16:48:29</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1591800509650</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\leo\Desktop\Real_Time_Embedded_Systems\Lab4\hw\quartus\software\sound_acquisition_bsp</BspGeneratedLocation>
-        <BspSettingsFile>.\settings.bsp</BspSettingsFile>
-        <SopcDesignFile>..\..\main_system.sopcinfo</SopcDesignFile>
+        <BspGeneratedTimeStamp>Jun 11, 2020 5:35:40 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1591889740813</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>/home/vm/Final-Project-Real-Time-Embedded-Systems/sw/nios/sound_acquisition_bsp</BspGeneratedLocation>
+        <BspSettingsFile>settings.bsp</BspSettingsFile>
+        <SopcDesignFile>/home/vm/Final-Project-Real-Time-Embedded-Systems/hw/quartus/main_system.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_sound_acquisition</Cpu>
         <SchemaVersion>1.9</SchemaVersion>

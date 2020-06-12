@@ -129,12 +129,12 @@ BUILD_CONFIGS := default
 
 # This following VERSION comment indicates the version of the tool used to 
 # generate this makefile. A makefile variable is provided for VERSION as well. 
-# ACDS_VERSION: 18.0
-ACDS_VERSION := 18.0
+# ACDS_VERSION: 18.1
+ACDS_VERSION := 18.1
 
 # This following BUILD_NUMBER comment indicates the build number of the tool 
 # used to generate this makefile. 
-# BUILD_NUMBER: 614
+# BUILD_NUMBER: 625
 
 # Define path to the application ELF. 
 # It may be used by the makefile fragments so is defined before including them. 
@@ -142,7 +142,7 @@ ACDS_VERSION := 18.0
 ELF := sound_acquisition.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := sound_acquisition.c
+C_SRCS := hello_world.c
 CXX_SRCS :=
 ASM_SRCS :=
 
@@ -177,7 +177,7 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := ../sound_acquisition_bsp/
+BSP_ROOT_DIR := /home/vm/Final-Project-Real-Time-Embedded-Systems/sw/nios/sound_acquisition_bsp/
 
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS :=

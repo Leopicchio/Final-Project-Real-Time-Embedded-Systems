@@ -2,9 +2,9 @@
  * linker.h - Linker script mapping information
  *
  * Machine generated for CPU 'nios2_sound_acquisition' in SOPC Builder design 'main_system'
- * SOPC Builder design path: ../../main_system.sopcinfo
+ * SOPC Builder design path: /home/vm/Final-Project-Real-Time-Embedded-Systems/hw/quartus/main_system.sopcinfo
  *
- * Generated: Wed Jun 10 16:48:30 CEST 2020
+ * Generated: Thu Jun 11 17:34:31 CEST 2020
  */
 
 /*

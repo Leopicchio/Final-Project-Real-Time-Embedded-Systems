@@ -5,8 +5,8 @@ JedecChain;
 
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
-	P ActionCode(Ign)
-		Device PartName(5CSEMA5) MfrSpec(OpMask(0));
+	P ActionCode(Cfg)
+		Device PartName(5CSEMA5F31) Path("/home/vm/Final-Project-Real-Time-Embedded-Systems/hw/quartus/output_files/") File("Lab4.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

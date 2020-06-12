@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_FFT' in SOPC Builder design 'main_system'
  * SOPC Builder design path: /home/vm/Final-Project-Real-Time-Embedded-Systems/hw/quartus/main_system.sopcinfo
  *
- * Generated: Wed Jun 10 23:30:33 CEST 2020
+ * Generated: Thu Jun 11 17:29:19 CEST 2020
  */
 
 /*
@@ -59,6 +59,7 @@
  */
 
 #include "altera_nios2_gen2_irq.h"
+#include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_mailbox_simple.h"
 #include "altera_avalon_mutex.h"
 #include "altera_avalon_uart.h"
@@ -68,6 +69,7 @@
  */
 
 ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( NIOS2_FFT, nios2_FFT);
+ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART_1, jtag_uart_1);
 ALTERA_AVALON_MAILBOX_SIMPLE_INSTANCE ( MAILBOX_SIMPLE_0, mailbox_simple_0);
 ALTERA_AVALON_MUTEX_INSTANCE ( MUTEX_SDRAM, mutex_SDRAM);
 ALTERA_AVALON_UART_INSTANCE ( UART_0, uart_0);
@@ -93,6 +95,7 @@ void alt_irq_init ( const void* base )
 
 void alt_sys_init( void )
 {
+    ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART_1, jtag_uart_1);
     ALTERA_AVALON_MAILBOX_SIMPLE_INIT ( MAILBOX_SIMPLE_0, mailbox_simple_0);
     ALTERA_AVALON_MUTEX_INIT ( MUTEX_SDRAM, mutex_SDRAM);
     ALTERA_AVALON_UART_INIT ( UART_0, uart_0);
