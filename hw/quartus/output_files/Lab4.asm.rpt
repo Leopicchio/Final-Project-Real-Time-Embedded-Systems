@@ -1,5 +1,5 @@
 Assembler report for Lab4
-Thu Jun 11 20:10:10 2020
+Fri Jun 12 09:08:35 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Thu Jun 11 20:10:10 2020 ;
+; Assembler Status      ; Successful - Fri Jun 12 09:08:35 2020 ;
 ; Revision Name         ; Lab4                                  ;
 ; Top-level Entity Name ; Lab                                   ;
 ; Family                ; Cyclone V                             ;
@@ -78,8 +78,8 @@ refer to the applicable agreement for further details.
 +----------------+-------------------------------------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                                                     ;
 +----------------+-------------------------------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x070248AC                                                                                                  ;
-; Checksum       ; 0x070248AC                                                                                                  ;
+; JTAG usercode  ; 0x070AA108                                                                                                  ;
+; Checksum       ; 0x070AA108                                                                                                  ;
 +----------------+-------------------------------------------------------------------------------------------------------------+
 
 
@@ -89,16 +89,16 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Thu Jun 11 20:09:48 2020
+    Info: Processing started: Fri Jun 12 09:08:09 2020
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Lab4 -c Lab4
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Info (115017): Design contains a time-limited core -- only a single, time-limited programming file can be generated
 Warning (210042): Can't convert time-limited SOF into POF, HEX File, TTF, or RBF
 Info: Quartus Prime Assembler was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4958 megabytes
-    Info: Processing ended: Thu Jun 11 20:10:11 2020
-    Info: Elapsed time: 00:00:23
-    Info: Total CPU time (on all processors): 00:00:22
+    Info: Peak virtual memory: 4963 megabytes
+    Info: Processing ended: Fri Jun 12 09:08:36 2020
+    Info: Elapsed time: 00:00:27
+    Info: Total CPU time (on all processors): 00:00:20
 
 

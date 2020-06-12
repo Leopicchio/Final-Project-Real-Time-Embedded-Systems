@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2020.06.11.19:44:45</td>
+    <td class="l">2020.06.12.08:59:34</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -178,8 +178,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="empty"></td>
-    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>08000000</td>
+    <td class="addr"><span style="color:#989898">0x</span>08000000</td>
     <td class="addr"><span style="color:#989898">0x</span>08000000</td>
     <td class="addr"><span style="color:#989898">0x</span>08000000</td>
    </tr>
@@ -482,7 +482,31 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_nios2_sound_acquisition">nios2_sound_acquisition</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="15">SDRAM_controller</td>
+      <td class="main" rowspan="19">SDRAM_controller</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td class="from">instruction_master&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="6">
+       <a href="#module_nios2_FFT">nios2_FFT</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -519,18 +543,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_nios2_FFT">nios2_FFT</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1819,7 +1831,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_pll">pll</a>
       </td>
       <td class="from">outclk0&#160;&#160;</td>
-      <td class="main" rowspan="86">nios2_FFT</td>
+      <td class="main" rowspan="90">nios2_FFT</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -2119,10 +2131,30 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td></td>
       <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="6">
        <a href="#module_SDRAM_controller">SDRAM_controller</a>
       </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">instruction_master&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
      </tr>
      <tr>
       <td></td>
@@ -2896,7 +2928,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">instAddrWidth</td>
-        <td class="parametervalue">19</td>
+        <td class="parametervalue">28</td>
        </tr>
        <tr>
         <td class="parametername">faAddrWidth</td>
@@ -2904,7 +2936,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataAddrWidth</td>
-        <td class="parametervalue">19</td>
+        <td class="parametervalue">28</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0AddrWidth</td>
@@ -2948,7 +2980,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">instSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='SDRAM_controller.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">faSlaveMapParam</td>
@@ -2956,7 +2988,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='uart_0.s1' start='0x41000' end='0x41020' type='altera_avalon_uart.s1' /&gt;&lt;slave name='mailbox_to_Sound_Acquisition.avmm_msg_sender' start='0x41020' end='0x41030' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='pio_switches.s1' start='0x41030' end='0x41040' type='altera_avalon_pio.s1' /&gt;&lt;slave name='mailbox_to_FFT.avmm_msg_receiver' start='0x41040' end='0x41050' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='sysid_qsys_0.control_slave' start='0x41050' end='0x41058' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='mutex_SDRAM.s1' start='0x41058' end='0x41060' type='altera_avalon_mutex.s1' /&gt;&lt;slave name='jtag_uart_FFT.avalon_jtag_slave' start='0x41060' end='0x41068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='uart_0.s1' start='0x41000' end='0x41020' type='altera_avalon_uart.s1' /&gt;&lt;slave name='mailbox_to_Sound_Acquisition.avmm_msg_sender' start='0x41020' end='0x41030' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='pio_switches.s1' start='0x41030' end='0x41040' type='altera_avalon_pio.s1' /&gt;&lt;slave name='mailbox_to_FFT.avmm_msg_receiver' start='0x41040' end='0x41050' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='sysid_qsys_0.control_slave' start='0x41050' end='0x41058' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='mutex_SDRAM.s1' start='0x41058' end='0x41060' type='altera_avalon_mutex.s1' /&gt;&lt;slave name='jtag_uart_FFT.avalon_jtag_slave' start='0x41060' end='0x41068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;slave name='SDRAM_controller.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -3093,7 +3125,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DATA_ADDR_WIDTH</td>
-        <td class="parametervalue">19</td>
+        <td class="parametervalue">28</td>
        </tr>
        <tr>
         <td class="parametername">DCACHE_BYPASS_MASK</td>
@@ -3177,7 +3209,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">INST_ADDR_WIDTH</td>
-        <td class="parametervalue">19</td>
+        <td class="parametervalue">28</td>
        </tr>
        <tr>
         <td class="parametername">NUM_OF_SHADOW_REG_SETS</td>
@@ -8199,7 +8231,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1591897483</td>
+        <td class="parametervalue">1591945172</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -8224,7 +8256,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1591897483</td>
+        <td class="parametervalue">1591945172</td>
        </tr>
       </table>
      </td>
@@ -8438,7 +8470,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <table class="blueBar">
    <tr>
     <td class="l">generation took 0.01 seconds</td>
-    <td class="r">rendering took 0.34 seconds</td>
+    <td class="r">rendering took 0.19 seconds</td>
    </tr>
   </table>
  </body>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="main_system" kind="main_system" version="1.0" fabric="QSYS">
  <!-- Format version 18.0 614 (Future versions may contain additional information.) -->
- <!-- 2020.06.11.19:44:44 -->
+ <!-- 2020.06.12.08:59:33 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1591897483</value>
+  <value>1591945172</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -6903,7 +6903,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DATA_ADDR_WIDTH</name>
-   <value>19</value>
+   <value>28</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DCACHE_BYPASS_MASK</name>
@@ -6987,7 +6987,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INST_ADDR_WIDTH</name>
-   <value>19</value>
+   <value>28</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.NUM_OF_SHADOW_REG_SETS</name>
@@ -8351,7 +8351,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="instAddrWidth">
    <type>int</type>
-   <value>19</value>
+   <value>28</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -8371,7 +8371,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataAddrWidth">
    <type>int</type>
-   <value>19</value>
+   <value>28</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -8481,7 +8481,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="instSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='SDRAM_controller.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -8501,7 +8501,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='uart_0.s1' start='0x41000' end='0x41020' type='altera_avalon_uart.s1' /><slave name='mailbox_to_Sound_Acquisition.avmm_msg_sender' start='0x41020' end='0x41030' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='pio_switches.s1' start='0x41030' end='0x41040' type='altera_avalon_pio.s1' /><slave name='mailbox_to_FFT.avmm_msg_receiver' start='0x41040' end='0x41050' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='sysid_qsys_0.control_slave' start='0x41050' end='0x41058' type='altera_avalon_sysid_qsys.control_slave' /><slave name='mutex_SDRAM.s1' start='0x41058' end='0x41060' type='altera_avalon_mutex.s1' /><slave name='jtag_uart_FFT.avalon_jtag_slave' start='0x41060' end='0x41068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='onchip_memory_nios2_FFT.s1' start='0x20000' end='0x40000' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_FFT.debug_mem_slave' start='0x40800' end='0x41000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='uart_0.s1' start='0x41000' end='0x41020' type='altera_avalon_uart.s1' /><slave name='mailbox_to_Sound_Acquisition.avmm_msg_sender' start='0x41020' end='0x41030' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='pio_switches.s1' start='0x41030' end='0x41040' type='altera_avalon_pio.s1' /><slave name='mailbox_to_FFT.avmm_msg_receiver' start='0x41040' end='0x41050' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='sysid_qsys_0.control_slave' start='0x41050' end='0x41058' type='altera_avalon_sysid_qsys.control_slave' /><slave name='mutex_SDRAM.s1' start='0x41058' end='0x41060' type='altera_avalon_mutex.s1' /><slave name='jtag_uart_FFT.avalon_jtag_slave' start='0x41060' end='0x41068' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='SDRAM_controller.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -9122,7 +9122,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>d_address</name>
     <direction>Output</direction>
-    <width>19</width>
+    <width>28</width>
     <role>address</role>
    </port>
    <port>
@@ -9244,6 +9244,14 @@ parameters are a RESULT of the module parameters. -->
     <name>uart_0.s1</name>
     <baseAddress>266240</baseAddress>
     <span>32</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>SDRAM_controller</moduleName>
+    <slaveName>s1</slaveName>
+    <name>SDRAM_controller.s1</name>
+    <baseAddress>134217728</baseAddress>
+    <span>67108864</span>
    </memoryBlock>
   </interface>
   <interface name="instruction_master" kind="avalon_master" version="18.0">
@@ -9511,7 +9519,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>i_address</name>
     <direction>Output</direction>
-    <width>19</width>
+    <width>28</width>
     <role>address</role>
    </port>
    <port>
@@ -9553,6 +9561,14 @@ parameters are a RESULT of the module parameters. -->
     <name>onchip_memory_nios2_FFT.s1</name>
     <baseAddress>131072</baseAddress>
     <span>131072</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>SDRAM_controller</moduleName>
+    <slaveName>s1</slaveName>
+    <name>SDRAM_controller.s1</name>
+    <baseAddress>134217728</baseAddress>
+    <span>67108864</span>
    </memoryBlock>
   </interface>
   <interface name="irq" kind="interrupt_receiver" version="18.0">
@@ -22081,7 +22097,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1591897483</value>
+   <value>1591945172</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -22101,7 +22117,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1591897483</value>
+   <value>1591945172</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -22117,7 +22133,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1591897483</value>
+   <value>1591945172</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -24475,6 +24491,57 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
+   name="nios2_FFT.data_master/SDRAM_controller.s1"
+   kind="avalon"
+   version="18.0"
+   start="nios2_FFT.data_master"
+   end="SDRAM_controller.s1">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x08000000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>nios2_FFT</startModule>
+  <startConnectionPoint>data_master</startConnectionPoint>
+  <endModule>SDRAM_controller</endModule>
+  <endConnectionPoint>s1</endConnectionPoint>
+ </connection>
+ <connection
    name="nios2_sound_acquisition.instruction_master/nios2_sound_acquisition.debug_mem_slave"
    kind="avalon"
    version="18.0"
@@ -24727,6 +24794,57 @@ parameters are a RESULT of the module parameters. -->
   <startModule>nios2_FFT</startModule>
   <startConnectionPoint>instruction_master</startConnectionPoint>
   <endModule>onchip_memory_nios2_FFT</endModule>
+  <endConnectionPoint>s1</endConnectionPoint>
+ </connection>
+ <connection
+   name="nios2_FFT.instruction_master/SDRAM_controller.s1"
+   kind="avalon"
+   version="18.0"
+   start="nios2_FFT.instruction_master"
+   end="SDRAM_controller.s1">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x08000000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>nios2_FFT</startModule>
+  <startConnectionPoint>instruction_master</startConnectionPoint>
+  <endModule>SDRAM_controller</endModule>
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
@@ -27240,7 +27358,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
-  <instanceCount>26</instanceCount>
+  <instanceCount>28</instanceCount>
   <name>avalon</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>

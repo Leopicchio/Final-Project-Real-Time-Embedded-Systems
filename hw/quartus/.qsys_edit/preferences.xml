@@ -10,8 +10,7 @@
    <name preferredWidth="257" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library/Basic Functions/Configuration and Programming,Library/Processors and Peripherals,Project,Library/Basic Functions,Library,Library/Processors and Peripherals/Inter-Process Communication" />
+ <library expandedCategories="Project,Library" />
  <window width="2736" height="1754" x="0" y="0" />
  <hdlexample language="VHDL" />
 </preferences>

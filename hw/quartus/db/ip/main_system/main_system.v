@@ -45,22 +45,22 @@ module main_system (
 	wire  [31:0] nios2_fft_data_master_readdata;                                                // mm_interconnect_0:nios2_FFT_data_master_readdata -> nios2_FFT:d_readdata
 	wire         nios2_fft_data_master_waitrequest;                                             // mm_interconnect_0:nios2_FFT_data_master_waitrequest -> nios2_FFT:d_waitrequest
 	wire         nios2_fft_data_master_debugaccess;                                             // nios2_FFT:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_FFT_data_master_debugaccess
-	wire  [18:0] nios2_fft_data_master_address;                                                 // nios2_FFT:d_address -> mm_interconnect_0:nios2_FFT_data_master_address
+	wire  [27:0] nios2_fft_data_master_address;                                                 // nios2_FFT:d_address -> mm_interconnect_0:nios2_FFT_data_master_address
 	wire   [3:0] nios2_fft_data_master_byteenable;                                              // nios2_FFT:d_byteenable -> mm_interconnect_0:nios2_FFT_data_master_byteenable
 	wire         nios2_fft_data_master_read;                                                    // nios2_FFT:d_read -> mm_interconnect_0:nios2_FFT_data_master_read
 	wire         nios2_fft_data_master_readdatavalid;                                           // mm_interconnect_0:nios2_FFT_data_master_readdatavalid -> nios2_FFT:d_readdatavalid
 	wire         nios2_fft_data_master_write;                                                   // nios2_FFT:d_write -> mm_interconnect_0:nios2_FFT_data_master_write
 	wire  [31:0] nios2_fft_data_master_writedata;                                               // nios2_FFT:d_writedata -> mm_interconnect_0:nios2_FFT_data_master_writedata
-	wire  [31:0] nios2_fft_instruction_master_readdata;                                         // mm_interconnect_0:nios2_FFT_instruction_master_readdata -> nios2_FFT:i_readdata
-	wire         nios2_fft_instruction_master_waitrequest;                                      // mm_interconnect_0:nios2_FFT_instruction_master_waitrequest -> nios2_FFT:i_waitrequest
-	wire  [18:0] nios2_fft_instruction_master_address;                                          // nios2_FFT:i_address -> mm_interconnect_0:nios2_FFT_instruction_master_address
-	wire         nios2_fft_instruction_master_read;                                             // nios2_FFT:i_read -> mm_interconnect_0:nios2_FFT_instruction_master_read
-	wire         nios2_fft_instruction_master_readdatavalid;                                    // mm_interconnect_0:nios2_FFT_instruction_master_readdatavalid -> nios2_FFT:i_readdatavalid
 	wire  [31:0] nios2_sound_acquisition_instruction_master_readdata;                           // mm_interconnect_0:nios2_sound_acquisition_instruction_master_readdata -> nios2_sound_acquisition:i_readdata
 	wire         nios2_sound_acquisition_instruction_master_waitrequest;                        // mm_interconnect_0:nios2_sound_acquisition_instruction_master_waitrequest -> nios2_sound_acquisition:i_waitrequest
 	wire  [27:0] nios2_sound_acquisition_instruction_master_address;                            // nios2_sound_acquisition:i_address -> mm_interconnect_0:nios2_sound_acquisition_instruction_master_address
 	wire         nios2_sound_acquisition_instruction_master_read;                               // nios2_sound_acquisition:i_read -> mm_interconnect_0:nios2_sound_acquisition_instruction_master_read
 	wire         nios2_sound_acquisition_instruction_master_readdatavalid;                      // mm_interconnect_0:nios2_sound_acquisition_instruction_master_readdatavalid -> nios2_sound_acquisition:i_readdatavalid
+	wire  [31:0] nios2_fft_instruction_master_readdata;                                         // mm_interconnect_0:nios2_FFT_instruction_master_readdata -> nios2_FFT:i_readdata
+	wire         nios2_fft_instruction_master_waitrequest;                                      // mm_interconnect_0:nios2_FFT_instruction_master_waitrequest -> nios2_FFT:i_waitrequest
+	wire  [27:0] nios2_fft_instruction_master_address;                                          // nios2_FFT:i_address -> mm_interconnect_0:nios2_FFT_instruction_master_address
+	wire         nios2_fft_instruction_master_read;                                             // nios2_FFT:i_read -> mm_interconnect_0:nios2_FFT_instruction_master_read
+	wire         nios2_fft_instruction_master_readdatavalid;                                    // mm_interconnect_0:nios2_FFT_instruction_master_readdatavalid -> nios2_FFT:i_readdatavalid
 	wire         mm_interconnect_0_audio_0_avalon_audio_slave_chipselect;                       // mm_interconnect_0:audio_0_avalon_audio_slave_chipselect -> audio_0:chipselect
 	wire  [31:0] mm_interconnect_0_audio_0_avalon_audio_slave_readdata;                         // audio_0:readdata -> mm_interconnect_0:audio_0_avalon_audio_slave_readdata
 	wire   [1:0] mm_interconnect_0_audio_0_avalon_audio_slave_address;                          // mm_interconnect_0:audio_0_avalon_audio_slave_address -> audio_0:address

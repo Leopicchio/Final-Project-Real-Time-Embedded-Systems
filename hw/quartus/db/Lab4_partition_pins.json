@@ -4,46 +4,6 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "LEDR[0]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[1]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[2]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[3]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[4]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[5]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[6]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[7]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[8]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[9]",
-					"strict" : false
-				},
-				{
 					"name" : "DRAM_ADDR[0]",
 					"strict" : false
 				},
@@ -124,7 +84,51 @@
 					"strict" : false
 				},
 				{
+					"name" : "DRAM_WE_N",
+					"strict" : false
+				},
+				{
 					"name" : "FPGA_I2C_SCLK",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[0]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[3]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[4]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[5]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[7]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[8]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[9]",
 					"strict" : false
 				},
 				{
@@ -132,7 +136,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "DRAM_WE_N",
+					"name" : "FPGA_I2C_SDAT",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0_D[0]",
 					"strict" : false
 				},
 				{
@@ -200,6 +208,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "GPIO_0_D[1]",
+					"strict" : false
+				},
+				{
 					"name" : "AUD_ADCLRCK",
 					"strict" : false
 				},
@@ -209,18 +221,6 @@
 				},
 				{
 					"name" : "AUD_DACLRCK",
-					"strict" : false
-				},
-				{
-					"name" : "FPGA_I2C_SDAT",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0_D[0]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0_D[1]",
 					"strict" : false
 				},
 				{
