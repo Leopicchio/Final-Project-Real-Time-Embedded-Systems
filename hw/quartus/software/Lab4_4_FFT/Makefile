@@ -142,7 +142,8 @@ ACDS_VERSION := 18.0
 ELF := Lab4_4_FFT.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := FFT_main.c
+C_SRCS += FFT_main.c
+C_SRCS += kiss_fft.c
 CXX_SRCS :=
 ASM_SRCS :=
 

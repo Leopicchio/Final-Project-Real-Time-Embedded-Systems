@@ -20,23 +20,37 @@
 #include <altera_avalon_pio_regs.h>
 #include "system.h"
 #include "sys/alt_irq.h"
+#include "kiss_fft.h"
 
+#define N 					16 		// size of the FFT
+
+void SilentFft(const char* title, const kiss_fft_cpx in[N], kiss_fft_cpx out[N], int inverse);
 void receiver_mailbox_callback(void* message);
 void sender_mailbox_callback(void* report, int status);
 void add_echo(unsigned int *file_address, unsigned int file_length, unsigned int delay_ms, float amplitude);
-
+void modify_pitch(unsigned int *file_address, unsigned int file_length, unsigned int pitch_change);
 // parameters of the file to be processed (which are received through the mailbox)
 unsigned int *file_address, file_length;
 char flag_data_ready = 0;
+//arrays for the FFT
+kiss_fft_cpx in[N], out[N];
 
 // the masks that are used to know which effect is activated
-#define EFFECT_REVERSE  0b0000000001
-#define EFFECT_ECHO		0b0000000010
+#define EFFECT_REVERSE  	0b0000000001
+#define EFFECT_ECHO			0b0000000010
+//....
+#define EFFECT_FFTPITCH		0b0000010000
 
 #define SAMPLING_FREQ_Hz	48000	// sampling frequency used by the audio CODEC (Hertz)
 #define SAMPLING_FREQ_kHz	48		// sampling frequency used by the audio CODEC (kHz)
 #define ECHO_DELAY_MS		1000	// milliseconds
 #define ECHO_AMPLITUDE		0.5		// in range from 0 to 1
+
+#define PITCH_CHANGE		1		// value added to the FFT bins to change the pitch
+
+#ifndef M_PI
+#define M_PI 3.14159265358979324
+#endif
 
 
 
@@ -86,6 +100,13 @@ int main()
 				printf("\tApplying echo...\n");
 				add_echo(file_address, file_length, ECHO_DELAY_MS, ECHO_AMPLITUDE);
 			}
+
+			if (activated_audio_effects & EFFECT_FFTPITCH)
+			{
+				printf("\tApplying pitch modification...\n");
+				modify_pitch(file_address, file_length, PITCH_CHANGE);
+			}
+
 			printf("----------------------------------\n");
 			// sends to the other processor the address and the length of the processed file
 			printf("Sending processed file info to the other processor...\n");
@@ -155,10 +176,46 @@ void add_echo(unsigned int *file_address, unsigned int file_length, unsigned int
 	printf("Echo applied\n");
 }
 
+void modify_pitch(unsigned int *file_address, unsigned int file_length, unsigned int pitch_change)
+{
+	unsigned int j,i;
+
+	for (j=0; j<file_length/N; j++)
+	{
+		for (i = 0; i < N; i++){
+			in[i].r = IORD_32DIRECT(file_address, j*N + i*4);
+			in[i].i = 0;
+		}
+		SilentFft("Signal (complex)", in, out, 0);	//calculate FFT
+		for (i = 0; i < N; i++)
+			out[i].r += pitch_change;				//modify pitch
+		for (i = 0; i < N; i++)
+			in[i].r = out[i].r, in[i].i = out[i].i;
+		SilentFft("Signal (complex)", in, out, 1);	//calculate reverse FFT
+		for (i = 0; i < N; i++)
+			IOWR_32DIRECT(file_address, j*N + i*4, out[i].r);
+	}
+	printf("Pitch modified\n");
+
+}
 
 
+void SilentFft(const char* title, const kiss_fft_cpx in[N], kiss_fft_cpx out[N], int inverse)
+{
+  kiss_fft_cfg cfg;
+  if ((cfg = kiss_fft_alloc(N, inverse/*is_inverse_fft*/, NULL, NULL)) != NULL)
+  {
+    size_t i;
 
-
+    kiss_fft(cfg, in, out);
+    free(cfg);
+  }
+  else
+  {
+    printf("not enough memory?\n");
+    exit(-1);
+  }
+}
 
 
 

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_FFT' in SOPC Builder design 'main_system'
  * SOPC Builder design path: ../../main_system.sopcinfo
  *
- * Generated: Fri Jun 12 09:25:15 CEST 2020
+ * Generated: Fri Jun 12 14:28:55 CEST 2020
  */
 
 /*
@@ -370,7 +370,7 @@
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1591945172
+#define SYSID_QSYS_0_TIMESTAMP 1591963936
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 

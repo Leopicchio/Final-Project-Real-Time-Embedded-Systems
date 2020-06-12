@@ -371,7 +371,7 @@ int altera_avalon_mailbox_send
     if ((dev->mailbox_irq == ALT_IRQ_NOT_CONNECTED) || (event==POLL))
     {
         /* Polling mode */
-        if (timeout == 0)
+        if (timeout ==0)
         {
             do
             {

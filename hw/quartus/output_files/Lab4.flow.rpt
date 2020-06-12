@@ -1,6 +1,6 @@
 Flow report for Lab4
-Fri Jun 12 09:09:29 2020
-Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+Fri Jun 12 14:23:18 2020
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
 ---------------------
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Fri Jun 12 09:08:35 2020       ;
-; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
+; Flow Status                     ; Successful - Fri Jun 12 14:22:20 2020       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; Lab4                                        ;
 ; Top-level Entity Name           ; Lab                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 3,993 / 32,070 ( 12 % )                     ;
-; Total registers                 ; 6582                                        ;
+; Logic utilization (in ALMs)     ; 3,863 / 32,070 ( 12 % )                     ;
+; Total registers                 ; 6493                                        ;
 ; Total pins                      ; 108 / 457 ( 24 % )                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 2,244,608 / 4,065,280 ( 55 % )              ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/12/2020 08:58:58 ;
+; Start date & time ; 06/12/2020 14:11:25 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Lab4                ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 209472083852714.159194513717056        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 8796760118786.159196388301930          ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; Lab         ; Top        ;
@@ -96,24 +96,24 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:04:02     ; 1.1                     ; 5229 MB             ; 00:05:24                           ;
-; Fitter               ; 00:04:46     ; 1.1                     ; 6778 MB             ; 00:08:58                           ;
-; Assembler            ; 00:00:26     ; 1.0                     ; 4963 MB             ; 00:00:20                           ;
-; Timing Analyzer      ; 00:00:51     ; 1.5                     ; 5482 MB             ; 00:01:09                           ;
-; Total                ; 00:10:05     ; --                      ; --                  ; 00:15:51                           ;
+; Analysis & Synthesis ; 00:04:02     ; 1.2                     ; 1454 MB             ; 00:05:50                           ;
+; Fitter               ; 00:06:12     ; 1.2                     ; 2910 MB             ; 00:11:57                           ;
+; Assembler            ; 00:00:30     ; 1.0                     ; 1113 MB             ; 00:00:28                           ;
+; Timing Analyzer      ; 00:00:56     ; 2.3                     ; 1555 MB             ; 00:01:51                           ;
+; Total                ; 00:11:40     ; --                      ; --                  ; 00:20:06                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                    ;
-+----------------------+------------------+------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-C7J3LSF  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; DESKTOP-C7J3LSF  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; DESKTOP-C7J3LSF  ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; DESKTOP-C7J3LSF  ; Windows 10 ; 10.0       ; x86_64         ;
-+----------------------+------------------+------------+------------+----------------+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++----------------------+------------------+----------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
++----------------------+------------------+----------------+------------+----------------+
+; Analysis & Synthesis ; vm-VirtualBox    ; Ubuntu 18.04.4 ; 18         ; x86_64         ;
+; Fitter               ; vm-VirtualBox    ; Ubuntu 18.04.4 ; 18         ; x86_64         ;
+; Assembler            ; vm-VirtualBox    ; Ubuntu 18.04.4 ; 18         ; x86_64         ;
+; Timing Analyzer      ; vm-VirtualBox    ; Ubuntu 18.04.4 ; 18         ; x86_64         ;
++----------------------+------------------+----------------+------------+----------------+
 
 
 ------------

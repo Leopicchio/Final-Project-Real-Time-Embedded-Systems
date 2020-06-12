@@ -11,7 +11,7 @@ obj/default/FFT_main.o: FFT_main.c \
  ../Lab4_4_FFT_bsp//drivers/inc/altera_avalon_mailbox_simple_regs.h \
  ../Lab4_4_FFT_bsp//drivers/inc/altera_avalon_pio_regs.h \
  ../Lab4_4_FFT_bsp//HAL/inc/sys/alt_irq.h \
- ../Lab4_4_FFT_bsp//HAL/inc/nios2.h
+ ../Lab4_4_FFT_bsp//HAL/inc/nios2.h kiss_fft.h
 
 ../Lab4_4_FFT_bsp//drivers/inc/altera_avalon_mailbox_simple.h:
 
@@ -44,3 +44,5 @@ obj/default/FFT_main.o: FFT_main.c \
 ../Lab4_4_FFT_bsp//HAL/inc/sys/alt_irq.h:
 
 ../Lab4_4_FFT_bsp//HAL/inc/nios2.h:
+
+kiss_fft.h:
