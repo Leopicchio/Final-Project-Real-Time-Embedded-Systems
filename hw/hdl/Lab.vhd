@@ -61,12 +61,12 @@ entity Lab is
         FPGA_I2C_SDAT    : inout std_logic;
 
         -- SEG7
-        --HEX0_N           : out   std_logic_vector(6 downto 0);
+        HEX0_N           : out   std_logic_vector(6 downto 0);
         --HEX1_N           : out   std_logic_vector(6 downto 0);
         --HEX2_N           : out   std_logic_vector(6 downto 0);
-        --HEX3_N           : out   std_logic_vector(6 downto 0);
-        --HEX4_N           : out   std_logic_vector(6 downto 0);
-        --HEX5_N           : out   std_logic_vector(6 downto 0);
+        HEX3_N           : out   std_logic_vector(6 downto 0);
+        HEX4_N           : out   std_logic_vector(6 downto 0);
+        HEX5_N           : out   std_logic_vector(6 downto 0);
 
         -- IR
         --IRDA_RXD         : in    std_logic;
@@ -197,7 +197,8 @@ component main_system is
             pio_leds_external_connection_export              : out   std_logic_vector(9 downto 0);                      -- export
 				pio_switches_external_connection_export          : in    std_logic_vector(9 downto 0)  := (others => 'X'); -- export
             uart_0_external_connection_rxd                   : in    std_logic                     := 'X';             -- rxd
-            uart_0_external_connection_txd                   : out   std_logic        
+            uart_0_external_connection_txd                   : out   std_logic;
+				pio_7_segments_external_connection_export        : out   std_logic_vector(27 downto 0)   
 		  );
     end component main_system;
 	 
@@ -238,8 +239,12 @@ begin
             pio_leds_external_connection_export              => LEDR,
 				pio_switches_external_connection_export          => SW,          --            pio_switches_external_connection.export
             uart_0_external_connection_rxd                   => GPIO_0_D(0),                   --                  uart_0_external_connection.rxd
-            uart_0_external_connection_txd                   => GPIO_0_D(1)                    --                                            .txd				
-		  );
+            uart_0_external_connection_txd                   => GPIO_0_D(1),                    --                                            .txd				
+				pio_7_segments_external_connection_export(27 downto 21)	=> 	HEX5_N,
+				pio_7_segments_external_connection_export(20 downto 14)	=> 	HEX4_N,
+				pio_7_segments_external_connection_export(13 downto 7)	=> 	HEX3_N,
+				pio_7_segments_external_connection_export(6 downto 0)		=> 	HEX0_N
+		 );
 
 end;
 

@@ -10,7 +10,8 @@
    <name preferredWidth="257" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library
+   expandedCategories="Library/Processors and Peripherals/Peripherals,Library/Processors and Peripherals,Library,Library/Interface Protocols/PCI Express,Library/Interface Protocols,Library/Interface Protocols/PCI Express/QSYS Example Designs,Project" />
  <window width="2736" height="1754" x="0" y="0" />
  <hdlexample language="VHDL" />
 </preferences>

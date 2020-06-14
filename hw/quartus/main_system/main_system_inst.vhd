@@ -24,7 +24,8 @@
 			sdram_controller_wire_ras_n                      : out   std_logic;                                        -- ras_n
 			sdram_controller_wire_we_n                       : out   std_logic;                                        -- we_n
 			uart_0_external_connection_rxd                   : in    std_logic                     := 'X';             -- rxd
-			uart_0_external_connection_txd                   : out   std_logic                                         -- txd
+			uart_0_external_connection_txd                   : out   std_logic;                                        -- txd
+			pio_7_segments_external_connection_export        : out   std_logic_vector(27 downto 0)                     -- export
 		);
 	end component main_system;
 
@@ -54,6 +55,7 @@
 			sdram_controller_wire_ras_n                      => CONNECTED_TO_sdram_controller_wire_ras_n,                      --                                            .ras_n
 			sdram_controller_wire_we_n                       => CONNECTED_TO_sdram_controller_wire_we_n,                       --                                            .we_n
 			uart_0_external_connection_rxd                   => CONNECTED_TO_uart_0_external_connection_rxd,                   --                  uart_0_external_connection.rxd
-			uart_0_external_connection_txd                   => CONNECTED_TO_uart_0_external_connection_txd                    --                                            .txd
+			uart_0_external_connection_txd                   => CONNECTED_TO_uart_0_external_connection_txd,                   --                                            .txd
+			pio_7_segments_external_connection_export        => CONNECTED_TO_pio_7_segments_external_connection_export         --          pio_7_segments_external_connection.export
 		);
 

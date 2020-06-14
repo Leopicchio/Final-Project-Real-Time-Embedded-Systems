@@ -23,6 +23,7 @@
 		.sdram_controller_wire_ras_n                      (<connected-to-sdram_controller_wire_ras_n>),                      //                                            .ras_n
 		.sdram_controller_wire_we_n                       (<connected-to-sdram_controller_wire_we_n>),                       //                                            .we_n
 		.uart_0_external_connection_rxd                   (<connected-to-uart_0_external_connection_rxd>),                   //                  uart_0_external_connection.rxd
-		.uart_0_external_connection_txd                   (<connected-to-uart_0_external_connection_txd>)                    //                                            .txd
+		.uart_0_external_connection_txd                   (<connected-to-uart_0_external_connection_txd>),                   //                                            .txd
+		.pio_7_segments_external_connection_export        (<connected-to-pio_7_segments_external_connection_export>)         //          pio_7_segments_external_connection.export
 	);
 

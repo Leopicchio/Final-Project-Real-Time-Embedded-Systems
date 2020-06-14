@@ -1,5 +1,5 @@
 Flow report for Lab4
-Fri Jun 12 09:09:29 2020
+Sun Jun 14 18:27:45 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,18 +40,18 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Fri Jun 12 09:08:35 2020       ;
+; Flow Status                     ; Successful - Sun Jun 14 18:26:54 2020       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; Lab4                                        ;
 ; Top-level Entity Name           ; Lab                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 3,993 / 32,070 ( 12 % )                     ;
-; Total registers                 ; 6582                                        ;
-; Total pins                      ; 108 / 457 ( 24 % )                          ;
+; Logic utilization (in ALMs)     ; 4,116 / 32,070 ( 13 % )                     ;
+; Total registers                 ; 6811                                        ;
+; Total pins                      ; 136 / 457 ( 30 % )                          ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 2,244,608 / 4,065,280 ( 55 % )              ;
+; Total block memory bits         ; 2,244,480 / 4,065,280 ( 55 % )              ;
 ; Total DSP Blocks                ; 6 / 87 ( 7 % )                              ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/12/2020 08:58:58 ;
+; Start date & time ; 06/14/2020 18:16:36 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Lab4                ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 209472083852714.159194513717056        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 209472083852714.159215139507532        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; Lab         ; Top        ;
@@ -96,11 +96,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:04:02     ; 1.1                     ; 5229 MB             ; 00:05:24                           ;
-; Fitter               ; 00:04:46     ; 1.1                     ; 6778 MB             ; 00:08:58                           ;
-; Assembler            ; 00:00:26     ; 1.0                     ; 4963 MB             ; 00:00:20                           ;
-; Timing Analyzer      ; 00:00:51     ; 1.5                     ; 5482 MB             ; 00:01:09                           ;
-; Total                ; 00:10:05     ; --                      ; --                  ; 00:15:51                           ;
+; Analysis & Synthesis ; 00:04:12     ; 1.1                     ; 5224 MB             ; 00:05:47                           ;
+; Fitter               ; 00:05:16     ; 1.1                     ; 6768 MB             ; 00:09:11                           ;
+; Assembler            ; 00:00:28     ; 1.0                     ; 4960 MB             ; 00:00:22                           ;
+; Timing Analyzer      ; 00:00:48     ; 1.5                     ; 5483 MB             ; 00:01:09                           ;
+; Total                ; 00:10:44     ; --                      ; --                  ; 00:16:29                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

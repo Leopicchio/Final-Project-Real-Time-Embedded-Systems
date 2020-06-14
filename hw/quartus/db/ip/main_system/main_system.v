@@ -14,6 +14,7 @@ module main_system (
 		input  wire        clk_clk,                                          //                                         clk.clk
 		output wire        clk_audio_codec_clk,                              //                             clk_audio_codec.clk
 		output wire        clk_sdram_clk,                                    //                                   clk_sdram.clk
+		output wire [27:0] pio_7_segments_external_connection_export,        //          pio_7_segments_external_connection.export
 		input  wire [3:0]  pio_buttons_external_connection_export,           //             pio_buttons_external_connection.export
 		output wire [9:0]  pio_leds_external_connection_export,              //                pio_leds_external_connection.export
 		input  wire [9:0]  pio_switches_external_connection_export,          //            pio_switches_external_connection.export
@@ -31,7 +32,7 @@ module main_system (
 		output wire        uart_0_external_connection_txd                    //                                            .txd
 	);
 
-	wire         pll_outclk0_clk;                                                               // pll:outclk_0 -> [audio_0:clk, audio_and_video_config_0:clk, irq_mapper:clk, irq_mapper_001:clk, jtag_uart_0:clk, jtag_uart_FFT:clk, mailbox_to_FFT:clk, mailbox_to_Sound_Acquisition:clk, mm_interconnect_0:pll_outclk0_clk, mutex_SDRAM:clk, nios2_FFT:clk, nios2_sound_acquisition:clk, onchip_memory:clk, onchip_memory_nios2_FFT:clk, pio_LEDS:clk, pio_buttons:clk, pio_switches:clk, rst_controller_001:clk, sysid_qsys_0:clock, uart_0:clk]
+	wire         pll_outclk0_clk;                                                               // pll:outclk_0 -> [audio_0:clk, audio_and_video_config_0:clk, irq_mapper:clk, irq_mapper_001:clk, jtag_uart_0:clk, jtag_uart_FFT:clk, mailbox_to_FFT:clk, mailbox_to_Sound_Acquisition:clk, mm_interconnect_0:pll_outclk0_clk, mutex_SDRAM:clk, nios2_FFT:clk, nios2_sound_acquisition:clk, onchip_memory:clk, onchip_memory_nios2_FFT:clk, pio_7_segments:clk, pio_LEDS:clk, pio_buttons:clk, pio_switches:clk, rst_controller_001:clk, sysid_qsys_0:clock, timer_0:clk, uart_0:clk]
 	wire         pll_outclk1_clk;                                                               // pll:outclk_1 -> [SDRAM_controller:clk, mm_interconnect_0:pll_outclk1_clk, rst_controller:clk]
 	wire  [31:0] nios2_sound_acquisition_data_master_readdata;                                  // mm_interconnect_0:nios2_sound_acquisition_data_master_readdata -> nios2_sound_acquisition:d_readdata
 	wire         nios2_sound_acquisition_data_master_waitrequest;                               // mm_interconnect_0:nios2_sound_acquisition_data_master_waitrequest -> nios2_sound_acquisition:d_waitrequest
@@ -53,7 +54,7 @@ module main_system (
 	wire  [31:0] nios2_fft_data_master_writedata;                                               // nios2_FFT:d_writedata -> mm_interconnect_0:nios2_FFT_data_master_writedata
 	wire  [31:0] nios2_sound_acquisition_instruction_master_readdata;                           // mm_interconnect_0:nios2_sound_acquisition_instruction_master_readdata -> nios2_sound_acquisition:i_readdata
 	wire         nios2_sound_acquisition_instruction_master_waitrequest;                        // mm_interconnect_0:nios2_sound_acquisition_instruction_master_waitrequest -> nios2_sound_acquisition:i_waitrequest
-	wire  [27:0] nios2_sound_acquisition_instruction_master_address;                            // nios2_sound_acquisition:i_address -> mm_interconnect_0:nios2_sound_acquisition_instruction_master_address
+	wire  [26:0] nios2_sound_acquisition_instruction_master_address;                            // nios2_sound_acquisition:i_address -> mm_interconnect_0:nios2_sound_acquisition_instruction_master_address
 	wire         nios2_sound_acquisition_instruction_master_read;                               // nios2_sound_acquisition:i_read -> mm_interconnect_0:nios2_sound_acquisition_instruction_master_read
 	wire         nios2_sound_acquisition_instruction_master_readdatavalid;                      // mm_interconnect_0:nios2_sound_acquisition_instruction_master_readdatavalid -> nios2_sound_acquisition:i_readdatavalid
 	wire  [31:0] nios2_fft_instruction_master_readdata;                                         // mm_interconnect_0:nios2_FFT_instruction_master_readdata -> nios2_FFT:i_readdata
@@ -134,6 +135,16 @@ module main_system (
 	wire         mm_interconnect_0_mutex_sdram_s1_read;                                         // mm_interconnect_0:mutex_SDRAM_s1_read -> mutex_SDRAM:read
 	wire         mm_interconnect_0_mutex_sdram_s1_write;                                        // mm_interconnect_0:mutex_SDRAM_s1_write -> mutex_SDRAM:write
 	wire  [31:0] mm_interconnect_0_mutex_sdram_s1_writedata;                                    // mm_interconnect_0:mutex_SDRAM_s1_writedata -> mutex_SDRAM:data_from_cpu
+	wire         mm_interconnect_0_timer_0_s1_chipselect;                                       // mm_interconnect_0:timer_0_s1_chipselect -> timer_0:chipselect
+	wire  [15:0] mm_interconnect_0_timer_0_s1_readdata;                                         // timer_0:readdata -> mm_interconnect_0:timer_0_s1_readdata
+	wire   [2:0] mm_interconnect_0_timer_0_s1_address;                                          // mm_interconnect_0:timer_0_s1_address -> timer_0:address
+	wire         mm_interconnect_0_timer_0_s1_write;                                            // mm_interconnect_0:timer_0_s1_write -> timer_0:write_n
+	wire  [15:0] mm_interconnect_0_timer_0_s1_writedata;                                        // mm_interconnect_0:timer_0_s1_writedata -> timer_0:writedata
+	wire         mm_interconnect_0_pio_7_segments_s1_chipselect;                                // mm_interconnect_0:pio_7_segments_s1_chipselect -> pio_7_segments:chipselect
+	wire  [31:0] mm_interconnect_0_pio_7_segments_s1_readdata;                                  // pio_7_segments:readdata -> mm_interconnect_0:pio_7_segments_s1_readdata
+	wire   [1:0] mm_interconnect_0_pio_7_segments_s1_address;                                   // mm_interconnect_0:pio_7_segments_s1_address -> pio_7_segments:address
+	wire         mm_interconnect_0_pio_7_segments_s1_write;                                     // mm_interconnect_0:pio_7_segments_s1_write -> pio_7_segments:write_n
+	wire  [31:0] mm_interconnect_0_pio_7_segments_s1_writedata;                                 // mm_interconnect_0:pio_7_segments_s1_writedata -> pio_7_segments:writedata
 	wire         mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_chipselect;                  // mm_interconnect_0:jtag_uart_FFT_avalon_jtag_slave_chipselect -> jtag_uart_FFT:av_chipselect
 	wire  [31:0] mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_readdata;                    // jtag_uart_FFT:av_readdata -> mm_interconnect_0:jtag_uart_FFT_avalon_jtag_slave_readdata
 	wire         mm_interconnect_0_jtag_uart_fft_avalon_jtag_slave_waitrequest;                 // jtag_uart_FFT:av_waitrequest -> mm_interconnect_0:jtag_uart_FFT_avalon_jtag_slave_waitrequest
@@ -191,10 +202,11 @@ module main_system (
 	wire         irq_mapper_001_receiver3_irq;                                                  // jtag_uart_0:av_irq -> irq_mapper_001:receiver3_irq
 	wire         irq_mapper_001_receiver4_irq;                                                  // pio_buttons:irq -> irq_mapper_001:receiver4_irq
 	wire  [31:0] nios2_sound_acquisition_irq_irq;                                               // irq_mapper_001:sender_irq -> nios2_sound_acquisition:irq
+	wire         irq_mapper_receiver5_irq;                                                      // timer_0:irq -> [irq_mapper:receiver5_irq, irq_mapper_001:receiver5_irq]
 	wire         rst_controller_reset_out_reset;                                                // rst_controller:reset_out -> [SDRAM_controller:reset_n, mm_interconnect_0:SDRAM_controller_reset_reset_bridge_in_reset_reset]
 	wire         nios2_sound_acquisition_debug_reset_request_reset;                             // nios2_sound_acquisition:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_002:reset_in1]
 	wire         nios2_fft_debug_reset_request_reset;                                           // nios2_FFT:debug_reset_request -> [rst_controller:reset_in2, rst_controller_001:reset_in2, rst_controller_002:reset_in2]
-	wire         rst_controller_001_reset_out_reset;                                            // rst_controller_001:reset_out -> [audio_0:reset, audio_and_video_config_0:reset, irq_mapper:reset, irq_mapper_001:reset, jtag_uart_0:rst_n, jtag_uart_FFT:rst_n, mailbox_to_FFT:rst_n, mailbox_to_Sound_Acquisition:rst_n, mm_interconnect_0:nios2_sound_acquisition_reset_reset_bridge_in_reset_reset, mutex_SDRAM:reset_n, nios2_FFT:reset_n, nios2_sound_acquisition:reset_n, onchip_memory:reset, onchip_memory_nios2_FFT:reset, pio_LEDS:reset_n, pio_buttons:reset_n, pio_switches:reset_n, rst_translator:in_reset, sysid_qsys_0:reset_n, uart_0:reset_n]
+	wire         rst_controller_001_reset_out_reset;                                            // rst_controller_001:reset_out -> [audio_0:reset, audio_and_video_config_0:reset, irq_mapper:reset, irq_mapper_001:reset, jtag_uart_0:rst_n, jtag_uart_FFT:rst_n, mailbox_to_FFT:rst_n, mailbox_to_Sound_Acquisition:rst_n, mm_interconnect_0:nios2_sound_acquisition_reset_reset_bridge_in_reset_reset, mutex_SDRAM:reset_n, nios2_FFT:reset_n, nios2_sound_acquisition:reset_n, onchip_memory:reset, onchip_memory_nios2_FFT:reset, pio_7_segments:reset_n, pio_LEDS:reset_n, pio_buttons:reset_n, pio_switches:reset_n, rst_translator:in_reset, sysid_qsys_0:reset_n, timer_0:reset_n, uart_0:reset_n]
 	wire         rst_controller_001_reset_out_reset_req;                                        // rst_controller_001:reset_req -> [nios2_FFT:reset_req, nios2_sound_acquisition:reset_req, onchip_memory:reset_req, onchip_memory_nios2_FFT:reset_req, rst_translator:reset_req_in]
 	wire         rst_controller_002_reset_out_reset;                                            // rst_controller_002:reset_out -> pll:rst
 
@@ -421,6 +433,17 @@ module main_system (
 		.freeze     (1'b0)                                                     // (terminated)
 	);
 
+	main_system_pio_7_segments pio_7_segments (
+		.clk        (pll_outclk0_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_001_reset_out_reset),            //               reset.reset_n
+		.address    (mm_interconnect_0_pio_7_segments_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_pio_7_segments_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_pio_7_segments_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_pio_7_segments_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_pio_7_segments_s1_readdata),   //                    .readdata
+		.out_port   (pio_7_segments_external_connection_export)       // external_connection.export
+	);
+
 	main_system_pio_LEDS pio_leds (
 		.clk        (pll_outclk0_clk),                          //                 clk.clk
 		.reset_n    (~rst_controller_001_reset_out_reset),      //               reset.reset_n
@@ -471,6 +494,17 @@ module main_system (
 		.reset_n  (~rst_controller_001_reset_out_reset),                   //         reset.reset_n
 		.readdata (mm_interconnect_0_sysid_qsys_0_control_slave_readdata), // control_slave.readdata
 		.address  (mm_interconnect_0_sysid_qsys_0_control_slave_address)   //              .address
+	);
+
+	main_system_timer_0 timer_0 (
+		.clk        (pll_outclk0_clk),                         //   clk.clk
+		.reset_n    (~rst_controller_001_reset_out_reset),     // reset.reset_n
+		.address    (mm_interconnect_0_timer_0_s1_address),    //    s1.address
+		.writedata  (mm_interconnect_0_timer_0_s1_writedata),  //      .writedata
+		.readdata   (mm_interconnect_0_timer_0_s1_readdata),   //      .readdata
+		.chipselect (mm_interconnect_0_timer_0_s1_chipselect), //      .chipselect
+		.write_n    (~mm_interconnect_0_timer_0_s1_write),     //      .write_n
+		.irq        (irq_mapper_receiver5_irq)                 //   irq.irq
 	);
 
 	main_system_uart_0 uart_0 (
@@ -606,6 +640,11 @@ module main_system (
 		.onchip_memory_nios2_FFT_s1_byteenable                       (mm_interconnect_0_onchip_memory_nios2_fft_s1_byteenable),                       //                                                    .byteenable
 		.onchip_memory_nios2_FFT_s1_chipselect                       (mm_interconnect_0_onchip_memory_nios2_fft_s1_chipselect),                       //                                                    .chipselect
 		.onchip_memory_nios2_FFT_s1_clken                            (mm_interconnect_0_onchip_memory_nios2_fft_s1_clken),                            //                                                    .clken
+		.pio_7_segments_s1_address                                   (mm_interconnect_0_pio_7_segments_s1_address),                                   //                                   pio_7_segments_s1.address
+		.pio_7_segments_s1_write                                     (mm_interconnect_0_pio_7_segments_s1_write),                                     //                                                    .write
+		.pio_7_segments_s1_readdata                                  (mm_interconnect_0_pio_7_segments_s1_readdata),                                  //                                                    .readdata
+		.pio_7_segments_s1_writedata                                 (mm_interconnect_0_pio_7_segments_s1_writedata),                                 //                                                    .writedata
+		.pio_7_segments_s1_chipselect                                (mm_interconnect_0_pio_7_segments_s1_chipselect),                                //                                                    .chipselect
 		.pio_buttons_s1_address                                      (mm_interconnect_0_pio_buttons_s1_address),                                      //                                      pio_buttons_s1.address
 		.pio_buttons_s1_write                                        (mm_interconnect_0_pio_buttons_s1_write),                                        //                                                    .write
 		.pio_buttons_s1_readdata                                     (mm_interconnect_0_pio_buttons_s1_readdata),                                     //                                                    .readdata
@@ -632,6 +671,11 @@ module main_system (
 		.SDRAM_controller_s1_chipselect                              (mm_interconnect_0_sdram_controller_s1_chipselect),                              //                                                    .chipselect
 		.sysid_qsys_0_control_slave_address                          (mm_interconnect_0_sysid_qsys_0_control_slave_address),                          //                          sysid_qsys_0_control_slave.address
 		.sysid_qsys_0_control_slave_readdata                         (mm_interconnect_0_sysid_qsys_0_control_slave_readdata),                         //                                                    .readdata
+		.timer_0_s1_address                                          (mm_interconnect_0_timer_0_s1_address),                                          //                                          timer_0_s1.address
+		.timer_0_s1_write                                            (mm_interconnect_0_timer_0_s1_write),                                            //                                                    .write
+		.timer_0_s1_readdata                                         (mm_interconnect_0_timer_0_s1_readdata),                                         //                                                    .readdata
+		.timer_0_s1_writedata                                        (mm_interconnect_0_timer_0_s1_writedata),                                        //                                                    .writedata
+		.timer_0_s1_chipselect                                       (mm_interconnect_0_timer_0_s1_chipselect),                                       //                                                    .chipselect
 		.uart_0_s1_address                                           (mm_interconnect_0_uart_0_s1_address),                                           //                                           uart_0_s1.address
 		.uart_0_s1_write                                             (mm_interconnect_0_uart_0_s1_write),                                             //                                                    .write
 		.uart_0_s1_read                                              (mm_interconnect_0_uart_0_s1_read),                                              //                                                    .read
@@ -649,10 +693,11 @@ module main_system (
 		.receiver2_irq (irq_mapper_receiver2_irq),           // receiver2.irq
 		.receiver3_irq (irq_mapper_receiver3_irq),           // receiver3.irq
 		.receiver4_irq (irq_mapper_receiver4_irq),           // receiver4.irq
+		.receiver5_irq (irq_mapper_receiver5_irq),           // receiver5.irq
 		.sender_irq    (nios2_fft_irq_irq)                   //    sender.irq
 	);
 
-	main_system_irq_mapper_001 irq_mapper_001 (
+	main_system_irq_mapper irq_mapper_001 (
 		.clk           (pll_outclk0_clk),                    //       clk.clk
 		.reset         (rst_controller_001_reset_out_reset), // clk_reset.reset
 		.receiver0_irq (irq_mapper_001_receiver0_irq),       // receiver0.irq
@@ -660,6 +705,7 @@ module main_system (
 		.receiver2_irq (irq_mapper_001_receiver2_irq),       // receiver2.irq
 		.receiver3_irq (irq_mapper_001_receiver3_irq),       // receiver3.irq
 		.receiver4_irq (irq_mapper_001_receiver4_irq),       // receiver4.irq
+		.receiver5_irq (irq_mapper_receiver5_irq),           // receiver5.irq
 		.sender_irq    (nios2_sound_acquisition_irq_irq)     //    sender.irq
 	);
 

@@ -24,7 +24,8 @@ module main_system (
 	sdram_controller_wire_ras_n,
 	sdram_controller_wire_we_n,
 	uart_0_external_connection_rxd,
-	uart_0_external_connection_txd);	
+	uart_0_external_connection_txd,
+	pio_7_segments_external_connection_export);	
 
 	input		audio_0_external_interface_ADCDAT;
 	input		audio_0_external_interface_ADCLRCK;
@@ -51,4 +52,5 @@ module main_system (
 	output		sdram_controller_wire_we_n;
 	input		uart_0_external_connection_rxd;
 	output		uart_0_external_connection_txd;
+	output	[27:0]	pio_7_segments_external_connection_export;
 endmodule
