@@ -1,0 +1,48 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst main_system.jtag_uart_FFT -pg 1 -lvl 5 -y 160
+preplace inst main_system.clk_0 -pg 1 -lvl 1 -y 910
+preplace inst main_system.pll -pg 1 -lvl 4 -y 860
+preplace inst main_system.nios2_sound_acquisition.clock_bridge -pg 1
+preplace inst main_system.mailbox_to_Sound_Acquisition -pg 1 -lvl 5 -y 540
+preplace inst main_system.timer_0 -pg 1 -lvl 5 -y 940
+preplace inst main_system.audio_0 -pg 1 -lvl 5 -y 680
+preplace inst main_system.nios2_FFT.cpu -pg 1
+preplace inst main_system -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst main_system.pio_buttons -pg 1 -lvl 5 -y 40
+preplace inst main_system.pio_LEDS -pg 1 -lvl 4 -y 1030
+preplace inst main_system.nios2_sound_acquisition -pg 1 -lvl 4 -y 540
+preplace inst main_system.nios2_FFT -pg 1 -lvl 3 -y 810
+preplace inst main_system.sysid_qsys_0 -pg 1 -lvl 5 -y 1120
+preplace inst main_system.audio_and_video_config_0 -pg 1 -lvl 5 -y 440
+preplace inst main_system.nios2_sound_acquisition.cpu -pg 1
+preplace inst main_system.nios2_FFT.reset_bridge -pg 1
+preplace inst main_system.mailbox_to_FFT -pg 1 -lvl 5 -y 300
+preplace inst main_system.nios2_FFT.clock_bridge -pg 1
+preplace inst main_system.SDRAM_controller -pg 1 -lvl 4 -y 680
+preplace inst main_system.uart_0 -pg 1 -lvl 4 -y 340
+preplace inst main_system.pio_switches -pg 1 -lvl 4 -y 1130
+preplace inst main_system.onchip_memory_nios2_FFT -pg 1 -lvl 4 -y 200
+preplace inst main_system.onchip_memory -pg 1 -lvl 5 -y 1040
+preplace inst main_system.mutex_SDRAM -pg 1 -lvl 4 -y 40
+preplace inst main_system.jtag_uart_0 -pg 1 -lvl 5 -y 820
+preplace inst main_system.nios2_sound_acquisition.reset_bridge -pg 1
+preplace netloc EXPORT<net_container>main_system</net_container>(SLAVE)main_system.pio_switches_external_connection,(SLAVE)pio_switches.external_connection) 1 0 4 NJ 1160 NJ 1160 NJ 1160 NJ
+preplace netloc EXPORT<net_container>main_system</net_container>(SLAVE)clk_0.clk_in,(SLAVE)main_system.clk) 1 0 1 NJ
+preplace netloc EXPORT<net_container>main_system</net_container>(SLAVE)main_system.audio_and_video_config_0_external_interface,(SLAVE)audio_and_video_config_0.external_interface) 1 0 5 NJ 490 NJ 490 NJ 490 NJ 490 NJ
+preplace netloc FAN_OUT<net_container>main_system</net_container>(SLAVE)mutex_SDRAM.clk,(SLAVE)onchip_memory_nios2_FFT.clk1,(SLAVE)timer_0.clk,(SLAVE)audio_and_video_config_0.clk,(SLAVE)nios2_FFT.clk,(SLAVE)nios2_sound_acquisition.clk,(SLAVE)audio_0.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)mailbox_to_FFT.clk,(SLAVE)uart_0.clk,(MASTER)pll.outclk0,(SLAVE)pio_buttons.clk,(SLAVE)jtag_uart_FFT.clk,(SLAVE)pio_LEDS.clk,(SLAVE)pio_switches.clk,(SLAVE)onchip_memory.clk1,(SLAVE)sysid_qsys_0.clk,(SLAVE)mailbox_to_Sound_Acquisition.clk) 1 2 3 610 750 1180 980 1640
+preplace netloc EXPORT<net_container>main_system</net_container>(MASTER)pll.outclk2,(MASTER)main_system.clk_sdram) 1 4 2 NJ 810 NJ
+preplace netloc EXPORT<net_container>main_system</net_container>(SLAVE)SDRAM_controller.wire,(SLAVE)main_system.sdram_controller_wire) 1 0 4 NJ 710 NJ 710 NJ 710 NJ
+preplace netloc EXPORT<net_container>main_system</net_container>(SLAVE)main_system.pio_buttons_external_connection,(SLAVE)pio_buttons.external_connection) 1 0 5 NJ 40 NJ 40 NJ 40 NJ 30 NJ
+preplace netloc INTERCONNECT<net_container>main_system</net_container>(SLAVE)pio_switches.s1,(SLAVE)nios2_sound_acquisition.debug_mem_slave,(SLAVE)audio_and_video_config_0.avalon_av_config_slave,(SLAVE)jtag_uart_FFT.avalon_jtag_slave,(SLAVE)uart_0.s1,(MASTER)nios2_sound_acquisition.instruction_master,(SLAVE)mutex_SDRAM.s1,(MASTER)nios2_FFT.data_master,(SLAVE)pio_LEDS.s1,(SLAVE)onchip_memory_nios2_FFT.s1,(SLAVE)mailbox_to_Sound_Acquisition.avmm_msg_sender,(SLAVE)SDRAM_controller.s1,(SLAVE)timer_0.s1,(SLAVE)mailbox_to_FFT.avmm_msg_receiver,(SLAVE)nios2_FFT.debug_mem_slave,(SLAVE)pio_buttons.s1,(MASTER)nios2_FFT.instruction_master,(SLAVE)audio_0.avalon_audio_slave,(SLAVE)mailbox_to_Sound_Acquisition.avmm_msg_receiver,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)mailbox_to_FFT.avmm_msg_sender,(SLAVE)sysid_qsys_0.control_slave,(MASTER)nios2_sound_acquisition.data_master,(SLAVE)onchip_memory.s1) 1 2 3 630 770 1120 1020 1660
+preplace netloc EXPORT<net_container>main_system</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)main_system.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>main_system</net_container>(SLAVE)uart_0.external_connection,(SLAVE)main_system.uart_0_external_connection) 1 0 4 NJ 370 NJ 370 NJ 370 NJ
+preplace netloc INTERCONNECT<net_container>main_system</net_container>(SLAVE)mailbox_to_Sound_Acquisition.interrupt_msg_pending,(SLAVE)jtag_uart_0.irq,(MASTER)nios2_sound_acquisition.irq,(SLAVE)pio_switches.irq,(SLAVE)mailbox_to_FFT.interrupt_msg_pending,(SLAVE)jtag_uart_FFT.irq,(SLAVE)uart_0.irq,(SLAVE)mailbox_to_FFT.interrupt_mb_available,(SLAVE)mailbox_to_Sound_Acquisition.interrupt_mb_available,(SLAVE)pio_buttons.irq,(SLAVE)audio_0.interrupt,(MASTER)nios2_FFT.irq,(SLAVE)timer_0.irq) 1 3 2 1140 810 1700
+preplace netloc POINT_TO_POINT<net_container>main_system</net_container>(SLAVE)pll.refclk,(MASTER)clk_0.clk) 1 1 3 NJ 920 NJ 970 1160
+preplace netloc EXPORT<net_container>main_system</net_container>(SLAVE)pio_LEDS.external_connection,(SLAVE)main_system.pio_leds_external_connection) 1 0 4 NJ 1060 NJ 1060 NJ 1060 NJ
+preplace netloc EXPORT<net_container>main_system</net_container>(MASTER)main_system.clk_audio_codec,(MASTER)pll.outclk3) 1 4 2 NJ 930 NJ
+preplace netloc EXPORT<net_container>main_system</net_container>(SLAVE)main_system.audio_0_external_interface,(SLAVE)audio_0.external_interface) 1 0 5 NJ 730 NJ 730 NJ 730 NJ 790 NJ
+preplace netloc INTERCONNECT<net_container>main_system</net_container>(SLAVE)nios2_FFT.reset,(MASTER)nios2_sound_acquisition.debug_reset_request,(SLAVE)pio_LEDS.reset,(SLAVE)nios2_sound_acquisition.reset,(SLAVE)mailbox_to_FFT.rst_n,(SLAVE)pio_buttons.reset,(SLAVE)onchip_memory_nios2_FFT.reset1,(MASTER)clk_0.clk_reset,(SLAVE)jtag_uart_0.reset,(SLAVE)pio_switches.reset,(SLAVE)pll.reset,(SLAVE)audio_0.reset,(SLAVE)sysid_qsys_0.reset,(SLAVE)onchip_memory.reset1,(MASTER)nios2_FFT.debug_reset_request,(SLAVE)timer_0.reset,(SLAVE)jtag_uart_FFT.reset,(SLAVE)mailbox_to_Sound_Acquisition.rst_n,(SLAVE)mutex_SDRAM.reset,(SLAVE)audio_and_video_config_0.reset,(SLAVE)uart_0.reset,(SLAVE)SDRAM_controller.reset) 1 1 4 NJ 940 630 950 1220 1000 1620
+preplace netloc POINT_TO_POINT<net_container>main_system</net_container>(SLAVE)SDRAM_controller.clk,(MASTER)pll.outclk1) 1 3 2 1240 850 1600
+levelinfo -pg 1 0 200 2060
+levelinfo -hier main_system 210 240 590 860 1360 1760 1930
