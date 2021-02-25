@@ -6,4 +6,4 @@ Our code performs a DFT and some basic audio processing like:
 * speed change
 * filtering
 * reverberation
-* pitch change (not working)
+* pitch change (to be improved)
